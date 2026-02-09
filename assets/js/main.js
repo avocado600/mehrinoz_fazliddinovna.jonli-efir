@@ -272,78 +272,44 @@
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyJl9ZUOBrxrLGcupImhxvLdn5qRUflahkn9ygM0Y-JobW6-gqMNuK8sL0aXQxojgu0/exec';
 const TELEGRAM_CHANNEL_URL = 'https://t.me/+i_SeI4k5vZ9jY2Ri';
 
-// Обновляем обработчик отправки формы
-registrationForm.addEventListener('submit', async (e) => {
+registrationForm.addEventListener('submit', function(e) {
     e.preventDefault();
     
     const userName = document.getElementById('userName').value;
     const userPhone = document.getElementById('userPhone').value;
     
-    // Валидация
     if (!userName.trim()) {
         alert("Iltimos, ismingizni kiriting!");
         return;
     }
     
-    if (!userPhone.match(/^[\+]?[0-9\s\-\(\)]{10,}$/)) {
-        alert("Iltimos, to'g'ri telefon raqamini kiriting! (masalan: +998901234567)");
-        return;
-    }
-    
-    // Показываем анимацию отправки
+    // Меняем текст кнопки
     const submitBtn = registrationForm.querySelector('.form-submit');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Yuborilmoqda...';
-    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Telegramga o\'tish...';
     
-    try {
-        // Отправляем данные в Google Sheets через GET запрос
-        const params = new URLSearchParams({
-            name: userName,
-            phone: userPhone
-        });
-        
-        // Отправляем запрос в Google Sheets
-        await fetch(`${GOOGLE_SCRIPT_URL}?${params.toString()}`, {
-            method: 'GET',
-            mode: 'no-cors'
-        });
-        
-        // Короткая пауза для визуального эффекта
-        await new Promise(resolve => setTimeout(resolve, 800));
-        
-        // ЗАКРЫВАЕМ МОДАЛКУ
+    // Отправляем данные в Google Sheets (асинхронно, не ждем)
+    const params = new URLSearchParams({name: userName, phone: userPhone});
+    fetch(`${GOOGLE_SCRIPT_URL}?${params.toString()}`, {
+        method: 'GET',
+        mode: 'no-cors'
+    });
+    
+    // Сразу переходим в Telegram
+    setTimeout(() => {
+        window.open(TELEGRAM_CHANNEL_URL, '_blank');
         closeModal();
-        
-        // НЕМЕДЛЕННЫЙ ПЕРЕХОД В TELEGRAM
-        setTimeout(() => {
-            window.open(TELEGRAM_CHANNEL_URL, '_blank');
-        }, 100); // Минимальная задержка для плавности
-        
-    } catch(error) {
-        console.error('Ошибка отправки:', error);
-        alert("Xatolik yuz berdi. Iltimos, keyinroq urinib ko'ring.");
-        
-        // Возвращаем кнопку в исходное состояние
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-    }
+    }, 300);
 });
 
-// Обновляем функцию закрытия модалки для сброса состояния
 function closeModal() {
     modal.classList.remove('active');
     document.body.style.overflow = '';
     
-    // Сбрасываем состояние формы
     setTimeout(() => {
         registrationForm.reset();
-        
         const submitBtn = registrationForm.querySelector('.form-submit');
         submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Yuborish';
         submitBtn.disabled = false;
-        
-        // Сбрасываем плавающие labels
         document.querySelectorAll('.form-label').forEach(label => {
             label.classList.remove('focused');
         });
