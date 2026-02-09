@@ -255,6 +255,186 @@
 
 
 
+         document.addEventListener('DOMContentLoaded', function() {
+            const resultItems = document.querySelectorAll('.result-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            resultItems.forEach(item => {
+                // Начально ставим анимацию на паузу
+                item.style.animationPlayState = 'paused';
+                observer.observe(item);
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // JavaScript для модального окна просмотра фото
+        document.addEventListener('DOMContentLoaded', function() {
+            // Элементы модального окна фото
+            const photoModal = document.getElementById('photoModal');
+            const photoModalClose = document.getElementById('photoModalClose');
+            const photoModalImg = document.getElementById('photoModalImg');
+            const photoModalName = document.getElementById('photoModalName');
+            const photoModalGrade = document.getElementById('photoModalGrade');
+            const photoModalPrev = document.getElementById('photoModalPrev');
+            const photoModalNext = document.getElementById('photoModalNext');
+            
+            // Все фото сертификатов
+            const certificateImages = document.querySelectorAll('.certificate-img');
+            const certificateData = [];
+            
+            // Собираем данные о всех сертификатах
+            certificateImages.forEach((img, index) => {
+                const resultItem = img.closest('.result-item');
+                const studentName = resultItem.querySelector('.student-name').textContent;
+                const certificateGrade = resultItem.querySelector('.certificate-grade').textContent;
+                
+                certificateData.push({
+                    src: img.src,
+                    name: studentName,
+                    grade: certificateGrade,
+                    index: index
+                });
+                
+                // Добавляем обработчик клика на каждое фото
+                img.addEventListener('click', () => {
+                    openPhotoModal(index);
+                });
+            });
+            
+            let currentPhotoIndex = 0;
+            
+            // Функция открытия модального окна с фото
+            function openPhotoModal(index) {
+                currentPhotoIndex = index;
+                const photo = certificateData[index];
+                
+                photoModalImg.src = photo.src;
+                photoModalName.textContent = photo.name;
+                photoModalGrade.textContent = photo.grade;
+                
+                photoModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Функция закрытия модального окна
+            function closePhotoModal() {
+                photoModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Функция показа следующего фото
+            function showNextPhoto() {
+                currentPhotoIndex = (currentPhotoIndex + 1) % certificateData.length;
+                openPhotoModal(currentPhotoIndex);
+            }
+            
+            // Функция показа предыдущего фото
+            function showPrevPhoto() {
+                currentPhotoIndex = (currentPhotoIndex - 1 + certificateData.length) % certificateData.length;
+                openPhotoModal(currentPhotoIndex);
+            }
+            
+            // Обработчики событий
+            photoModalClose.addEventListener('click', closePhotoModal);
+            photoModalPrev.addEventListener('click', showPrevPhoto);
+            photoModalNext.addEventListener('click', showNextPhoto);
+            
+            // Закрытие по клику на фон
+            photoModal.addEventListener('click', (e) => {
+                if (e.target === photoModal) {
+                    closePhotoModal();
+                }
+            });
+            
+            // Навигация с помощью клавиатуры
+            document.addEventListener('keydown', (e) => {
+                if (!photoModal.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    closePhotoModal();
+                } else if (e.key === 'ArrowRight') {
+                    showNextPhoto();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrevPhoto();
+                }
+            });
+            
+            // Swipe для мобильных устройств
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            photoModal.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            photoModal.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Свайп влево - следующее фото
+                    showNextPhoto();
+                }
+                
+                if (touchEndX > touchStartX + swipeThreshold) {
+                    // Свайп вправо - предыдущее фото
+                    showPrevPhoto();
+                }
+            }
+            
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

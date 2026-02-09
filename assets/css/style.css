@@ -715,3 +715,618 @@
                 display: block !important;
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Секция результатов */
+.results-section {
+    padding: 80px 0;
+    position: relative;
+}
+
+.results-title {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 60px;
+    text-align: center;
+    background: linear-gradient(90deg, var(--secondary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.results-title:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: -10px;
+    left: 0;
+    background: linear-gradient(90deg, var(--secondary), var(--accent));
+    border-radius: 2px;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.result-item {
+    background: rgba(26, 31, 46, 0.7);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s;
+    border: 1px solid rgba(0, 212, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 320px;
+}
+
+.result-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+    border-color: var(--secondary);
+}
+
+.certificate-container {
+    flex: 1;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 14, 23, 0.5);
+}
+
+.certificate-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid rgba(0, 212, 255, 0.2);
+    transition: transform 0.5s, border-color 0.3s;
+    cursor: pointer;
+}
+
+.certificate-img:hover {
+    transform: scale(1.05);
+    border-color: var(--secondary);
+}
+
+.result-info {
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid rgba(0, 212, 255, 0.1);
+    background: rgba(15, 20, 35, 0.8);
+}
+
+.student-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--light);
+    margin-bottom: 8px;
+}
+
+.certificate-grade {
+    font-size: 16px;
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+/* Анимация для сертификатов */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-item {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+/* Задержки анимации для каждого элемента */
+.result-item:nth-child(1) { animation-delay: 0.1s; }
+.result-item:nth-child(2) { animation-delay: 0.2s; }
+.result-item:nth-child(3) { animation-delay: 0.3s; }
+.result-item:nth-child(4) { animation-delay: 0.4s; }
+.result-item:nth-child(5) { animation-delay: 0.5s; }
+.result-item:nth-child(6) { animation-delay: 0.6s; }
+.result-item:nth-child(7) { animation-delay: 0.7s; }
+.result-item:nth-child(8) { animation-delay: 0.8s; }
+.result-item:nth-child(9) { animation-delay: 0.9s; }
+.result-item:nth-child(10) { animation-delay: 1s; }
+
+/* Адаптивность для результатов */
+@media (max-width: 1200px) {
+    .results-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 0 20px;
+    }
+    
+    .result-item {
+        height: 300px;
+    }
+    
+    .certificate-img {
+        height: 160px;
+    }
+}
+
+@media (max-width: 992px) {
+    .results-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .result-item {
+        height: 280px;
+    }
+    
+    .certificate-img {
+        height: 150px;
+    }
+}
+
+/* ВАЖНОЕ ИЗМЕНЕНИЕ: для мобильных (до 768px) делаем 4 в ряд */
+@media (max-width: 768px) {
+    .results-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 в ряд */
+        gap: 12px;
+        padding: 0 15px;
+    }
+    
+    .results-title {
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+    
+    .result-item {
+        height: 220px; /* Оптимальная высота для 4 в ряд */
+    }
+    
+    .certificate-container {
+        padding: 10px;
+    }
+    
+    .certificate-img {
+        height: 110px; /* Уменьшаем высоту фото */
+    }
+    
+    .result-info {
+        padding: 12px;
+    }
+    
+    .student-name {
+        font-size: 13px;
+        margin-bottom: 5px;
+    }
+    
+    .certificate-grade {
+        font-size: 12px;
+    }
+}
+
+/* Для средних телефонов */
+@media (max-width: 576px) {
+    .results-grid {
+        grid-template-columns: repeat(4, 1fr); /* Все равно 4 в ряд */
+        gap: 10px;
+        padding: 0 10px;
+    }
+    
+    .result-item {
+        height: 200px;
+    }
+    
+    .certificate-img {
+        height: 100px;
+    }
+    
+    .student-name {
+        font-size: 12px;
+    }
+    
+    .certificate-grade {
+        font-size: 11px;
+    }
+}
+
+/* Для маленьких телефонов (менее 480px) */
+@media (max-width: 480px) {
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 в ряд для маленьких экранов */
+        gap: 15px;
+    }
+    
+    .result-item {
+        height: 240px;
+    }
+    
+    .certificate-img {
+        height: 130px;
+    }
+    
+    .student-name {
+        font-size: 14px;
+    }
+    
+    .certificate-grade {
+        font-size: 13px;
+    }
+}
+
+/* Для очень маленьких телефонов */
+@media (max-width: 360px) {
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .result-item {
+        height: 220px;
+    }
+    
+    .certificate-img {
+        height: 120px;
+    }
+    
+    .student-name {
+        font-size: 13px;
+    }
+    
+    .certificate-grade {
+        font-size: 12px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .photo-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(5, 10, 20, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .photo-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+            animation: photoModalFade 0.5s ease;
+        }
+        
+        @keyframes photoModalFade {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        .photo-modal-container {
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            position: relative;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        
+        .photo-modal-overlay.active .photo-modal-container {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .photo-modal-img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+        }
+        
+        .photo-modal-close {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid var(--secondary);
+            color: var(--light);
+            font-size: 28px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10001;
+        }
+        
+        .photo-modal-close:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+        
+        .photo-modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid var(--secondary);
+            color: var(--light);
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10001;
+        }
+        
+        .photo-modal-nav:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .photo-modal-prev {
+            left: -60px;
+        }
+        
+        .photo-modal-next {
+            right: -60px;
+        }
+        
+        .photo-modal-info {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: var(--light);
+            padding: 15px;
+            background: rgba(10, 14, 23, 0.9);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        
+        .photo-modal-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+        
+        .photo-modal-grade {
+            font-size: 16px;
+            color: var(--gray);
+        }
+        
+        /* Адаптивность для модалки фото */
+        @media (max-width: 992px) {
+            .photo-modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+            
+            .photo-modal-prev {
+                left: 10px;
+            }
+            
+            .photo-modal-next {
+                right: 10px;
+            }
+            
+            .photo-modal-close {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .photo-modal-container {
+                width: 95%;
+            }
+            
+            .photo-modal-nav {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+            
+            .photo-modal-info {
+                bottom: -40px;
+                padding: 10px;
+            }
+            
+            .photo-modal-name {
+                font-size: 18px;
+            }
+        }
+        
+        /* Для маленьких экранов скрываем кнопки навигации */
+        @media (max-width: 576px) {
+            .photo-modal-prev,
+            .photo-modal-next {
+                display: none;
+            }
+        }
+        
+        /* Делаем фото сертификатов кликабельными */
+        .certificate-img {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .certificate-img:hover {
+            transform: scale(1.05);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ ДЛЯ МОБИЛЬНЫХ */
+@media (max-width: 768px) {
+    .results-section {
+        padding: 60px 0;
+        overflow-x: hidden;
+    }
+    
+    .results-grid {
+        display: flex !important; /* Меняем grid на flex */
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 10px 15px 20px !important;
+        gap: 15px !important;
+        margin: 0 -15px !important;
+        max-width: none !important;
+    }
+    
+    /* Скрываем скроллбар на некоторых браузерах */
+    .results-grid::-webkit-scrollbar {
+        height: 4px;
+    }
+    
+    .results-grid::-webkit-scrollbar-track {
+        background: rgba(0, 212, 255, 0.1);
+    }
+    
+    .results-grid::-webkit-scrollbar-thumb {
+        background: var(--secondary);
+        border-radius: 2px;
+    }
+    
+    .result-item {
+        flex: 0 0 auto !important;
+        width: 150px !important; /* Фиксированная ширина для скролла */
+        height: 220px !important;
+        scroll-snap-align: start;
+    }
+    
+    .certificate-container {
+        height: 120px !important;
+    }
+    
+    .certificate-img {
+        height: 100px !important;
+    }
+    
+    .student-name {
+        font-size: 13px !important;
+    }
+    
+    .certificate-grade {
+        font-size: 12px !important;
+    }
+}
+
+/* Для планшетов - 3 в ряд */
+@media (min-width: 769px) and (max-width: 992px) {
+    .results-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
