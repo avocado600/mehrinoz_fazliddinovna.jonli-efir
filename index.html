@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mehrinoz Fazliddinovna - Milliy Sertifikat </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets\css\style.css">
+    
+</head>
+<body>
+    <!-- АХУЕННАЯ МОДАЛКА -->
+    <div class="modal-overlay" id="registrationModal">
+        <div class="modal-container">
+            <button class="modal-close" id="modalClose">&times;</button>
+            
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h2 class="modal-title">Ro'yxatdan o'tish</h2>
+                <p class="modal-subtitle">Jonli efirga qo'shilish uchun ma'lumotlaringizni qoldiring</p>
+            </div>
+            
+            <form class="modal-form" id="registrationForm">
+                <div class="form-group">
+                    <input type="text" class="form-input" id="userName" placeholder="Ism" required>
+                    <label class="form-label" for="userName">Ism</label>
+                </div>
+                
+                <div class="form-group">
+                    <input type="tel" class="form-input" id="userPhone" placeholder="Telefon raqam" required>
+                    <label class="form-label" for="userPhone">Telefon raqam</label>
+                </div>
+                
+                <button type="submit" class="form-submit">
+                    <i class="fas fa-paper-plane"></i> Yuborish
+                </button>
+            </form>
+            
+            <div class="modal-success" id="successMessage">
+                <div class="success-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h3 class="success-message">Muvaffaqiyatli yuborildi!</h3>
+                <p class="success-details">Tez orada siz bilan bog'lanamiz. Rahmat!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">60 kunda Milliy Sertifikat olish orqali, Orzuyingizdagi Universitet talabasi bo'ling!</h1>
+                    
+                    <!-- Achievement для десктопа -->
+                    <div class="achievement desktop-achievement">
+                        <div class="achievement-number">731</div>
+                        <p>o'quvchim natijaga erishishkani kabi siz ham erishishiz mumkinligini isbotlab beraman.</p>
+                    </div>
+                    
+                    <!-- Фото для мобильных -->
+                    <div class="mobile-photo-container">
+                        <div class="teacher-photo">
+                            <img src="assets\images\IMG_20260209_200158_712(1)(1).jpg" alt="Teacher" class="teacher-img">
+                            <div class="teacher-overlay">
+                                <div class="teacher-name">Mehrinoz Fazliddinovna</div>
+                                <div class="teacher-title">Milliy Sertifikat bo'yicha mutaxassis o'qituvchi</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Кнопка регистрации -->
+                    <div class="buttons-container">
+                        <button class="btn btn-primary btn-pulse open-modal-btn">
+                            <i class="fas fa-user-plus"></i> Ro'yxatdan o'tish
+                        </button>
+                    </div>
+                    
+                    <!-- Achievement для мобильных -->
+                    <div class="mobile-achievement-container">
+                        <div class="achievement">
+                            <div class="achievement-number">731</div>
+                            <p>o'quvchim natijaga erishishkani kabi siz ham erishishiz mumkinligini isbotlab beraman.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Фото для десктопа -->
+                <div class="teacher-photo desktop-photo">
+                    <img src="C:\Users\justi\Downloads\IMG_20260209_200158_712(1)(1).jpg" alt="Teacher" class="teacher-img">
+                    <div class="teacher-overlay">
+                        <div class="teacher-name">Mehrinoz Fazliddinovna</div>
+                        <div class="teacher-title">Milliy Sertifikat bo'yicha mutaxassis o'qituvchi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Stream Section -->
+    <section class="live-stream" id="live">
+        <div class="container">
+            <h2 class="section-title">Jonli efirda siz:</h2>
+            
+            <div class="stream-items">
+                <div class="stream-item">
+                    <i class="fas fa-check-circle"></i>
+                    <strong>Qanday qilib qo'llanilsin milliy sertifikat olishni</strong> - Sizga Milliy Sertifikat olishning barcha sirlari va samarali usullarini o'rgataman.
+                </div>
+                
+                <div class="stream-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <strong>Milliy sertifikat imtihonidagi testlarni tahlil qilishni</strong> - Imtihondagi test turlarini chuqur o'rganib, ularni qanday hal qilish kerakligini ko'rsataman.
+                </div>
+                
+                <div class="stream-item">
+                    <i class="fas fa-language"></i>
+                    <strong>O'zingizni ona tilingizni shuntirish orqali aprel oyida 100% kafolat bilan milliy sertifikat olishni orgatib qo'yaman</strong> - Ona tilini mukammal o'zlashtirish orqali sertifikat olishingizni kafolatlayman.
+                </div>
+            </div>
+            
+            <div class="buttons-container">
+                <button class="btn btn-primary btn-pulse open-modal-btn">
+                    <i class="fas fa-calendar-check"></i> Jonli efirga qo'shiling
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <p class="copyright">© 2026 Avocado. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets\js\main.js">
+
+    </script>
+</body>
+</html>
