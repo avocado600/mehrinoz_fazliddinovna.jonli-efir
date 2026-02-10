@@ -1,497 +1,253 @@
-        // Модальное окно
-        const modal = document.getElementById('registrationModal');
-        const modalClose = document.getElementById('modalClose');
-        const openModalBtns = document.querySelectorAll('.open-modal-btn');
-        const registrationForm = document.getElementById('registrationForm');
-        const successMessage = document.getElementById('successMessage');
+ // Создаем анимированные точки
+    function createBackgroundDots() {
+        const bgContainer = document.createElement('div');
+        bgContainer.className = 'animated-bg';
         
-        // Открытие модалки
-        openModalBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-        
-        // Закрытие модалки
-        modalClose.addEventListener('click', () => {
-            closeModal();
-        });
-        
-        // Закрытие при клике на фон
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-        
-        // Закрытие на Escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                closeModal();
-            }
-        });
-        
-        // Функция закрытия модалки
-        function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
+        // Создаем 15 точек
+        for (let i = 0; i < 15; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'bg-dot';
+            
+            // Случайные параметры
+            const size = Math.random() * 60 + 20; // от 20px до 80px
+            const posX = Math.random() * 100; // от 0% до 100%
+            const posY = Math.random() * 100;
+            const delay = Math.random() * 5; // задержка от 0 до 5 секунд
+            const duration = 15 + Math.random() * 10; // длительность от 15 до 25 секунд
+            
+            // Устанавливаем стили
+            dot.style.width = `${size}px`;
+            dot.style.height = `${size}px`;
+            dot.style.left = `${posX}%`;
+            dot.style.top = `${posY}%`;
+            dot.style.animationDelay = `${delay}s`;
+            dot.style.animationDuration = `${duration}s`;
+            dot.style.backgroundColor = `rgba(213, 0, 0, ${Math.random() * 0.1 + 0.03})`;
+            
+            bgContainer.appendChild(dot);
         }
         
-        // Отправка формы
-        registrationForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const userName = document.getElementById('userName').value;
-            const userPhone = document.getElementById('userPhone').value;
-            
-            // Валидация номера телефона (простая)
-            if (!userPhone.match(/^[\+]?[0-9\s\-\(\)]+$/)) {
-                alert("Iltimos, to'g'ri telefon raqamini kiriting!");
-                return;
-            }
-            
-            // Показываем анимацию отправки
-            const submitBtn = registrationForm.querySelector('.form-submit');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Yuborilmoqda...';
-            submitBtn.disabled = true;
-            
-            // Имитация отправки на сервер
-            setTimeout(() => {
-                // Скрываем форму и показываем успешное сообщение
-                registrationForm.style.display = 'none';
-                successMessage.classList.add('active');
-                
-                // Сброс формы
-                registrationForm.reset();
-                
-                // Автоматическое закрытие через 3 секунды
-                setTimeout(() => {
-                    closeModal();
-                    // Возвращаем форму обратно
-                    registrationForm.style.display = 'flex';
-                    successMessage.classList.remove('active');
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, 3000);
-                
-                // Здесь можно добавить реальную отправку на сервер
-                console.log('Отправлены данные:', { name: userName, phone: userPhone });
-                
-            }, 1500);
-        });
-        
-        // Floating elements animation
-        document.addEventListener('DOMContentLoaded', function() {
-            // Create floating elements
-            const heroSection = document.querySelector('.hero');
-            for (let i = 0; i < 15; i++) {
-                const element = document.createElement('div');
-                element.classList.add('floating-element');
-                
-                // Random position
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
-                
-                // Random size
-                const size = Math.random() * 10 + 5;
-                
-                // Random animation delay
-                const delay = Math.random() * 5;
-                
-                element.style.left = `${posX}%`;
-                element.style.top = `${posY}%`;
-                element.style.width = `${size}px`;
-                element.style.height = `${size}px`;
-                element.style.animationDelay = `${delay}s`;
-                
-                heroSection.appendChild(element);
-            }
-            
-            // Create decorative lines
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                const line = document.createElement('div');
-                line.classList.add('line');
-                
-                // Random position and size
-                const posX = Math.random() * 100;
-                const width = Math.random() * 30 + 10;
-                
-                line.style.top = `${Math.random() * 100}%`;
-                line.style.left = `${posX}%`;
-                line.style.width = `${width}%`;
-                line.style.opacity = Math.random() * 0.3 + 0.1;
-                
-                section.appendChild(line);
-            });
-            
-            // Add animation to floating elements
-            const floatingElements = document.querySelectorAll('.floating-element');
-            floatingElements.forEach(element => {
-                // Animate floating
-                animateFloat(element);
-            });
-            
-            // Button click animation
-            const buttons = document.querySelectorAll('.btn');
-            buttons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    // Create ripple effect
-                    const ripple = document.createElement('span');
-                    const rect = this.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height);
-                    const x = e.clientX - rect.left - size / 2;
-                    const y = e.clientY - rect.top - size / 2;
-                    
-                    ripple.style.width = ripple.style.height = size + 'px';
-                    ripple.style.left = x + 'px';
-                    ripple.style.top = y + 'px';
-                    ripple.classList.add('ripple');
-                    
-                    this.appendChild(ripple);
-                    
-                    // Remove ripple after animation
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 600);
-                });
-            });
-            
-            // Scroll animation for stream items
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                    }
-                });
-            }, observerOptions);
-            
-            const streamItems = document.querySelectorAll('.stream-item');
-            streamItems.forEach(item => {
-                observer.observe(item);
-            });
-        });
-        
-        function animateFloat(element) {
-            // Random movement
-            const moveX = Math.random() * 40 - 20;
-            const moveY = Math.random() * 40 - 20;
-            const duration = Math.random() * 10 + 10;
-            
-            // Apply animation
-            element.style.animation = `float ${duration}s infinite ease-in-out`;
-            
-            // Create keyframes for floating animation
-            const styleSheet = document.styleSheets[0];
-            const floatKeyframes = `
-                @keyframes float {
-                    0% { transform: translate(0, 0) rotate(0deg); }
-                    33% { transform: translate(${moveX}px, ${moveY}px) rotate(120deg); }
-                    66% { transform: translate(${-moveX/2}px, ${-moveY/2}px) rotate(240deg); }
-                    100% { transform: translate(0, 0) rotate(360deg); }
-                }
-            `;
-            
-            // Only add if not already added
-            if (!document.querySelector('#float-animation')) {
-                const style = document.createElement('style');
-                style.id = 'float-animation';
-                style.textContent = floatKeyframes;
-                document.head.appendChild(style);
-            }
-        }
-        
-        // Add ripple effect styles
-        const rippleStyle = document.createElement('style');
-        rippleStyle.textContent = `
-            .ripple {
-                position: absolute;
-                border-radius: 50%;
-                background-color: rgba(255, 255, 255, 0.7);
-                transform: scale(0);
-                animation: ripple-animation 0.6s linear;
-            }
-            
-            @keyframes ripple-animation {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(rippleStyle);
-        
-        // Анимация для плавающих label в модалке
-        const formInputs = document.querySelectorAll('.form-input');
-        formInputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.querySelector('.form-label').classList.add('focused');
-            });
-            
-            input.addEventListener('blur', function() {
-                if (!this.value) {
-                    this.parentElement.querySelector('.form-label').classList.remove('focused');
-                }
-            });
-            
-            // Проверка при загрузке страницы
-            if (input.value) {
-                input.parentElement.querySelector('.form-label').classList.add('focused');
-            }
-        });
-
-
-
-
-
-
-
-
-
-         document.addEventListener('DOMContentLoaded', function() {
-            const resultItems = document.querySelectorAll('.result-item');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationPlayState = 'running';
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-            
-            resultItems.forEach(item => {
-                // Начально ставим анимацию на паузу
-                item.style.animationPlayState = 'paused';
-                observer.observe(item);
-            });
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // JavaScript для модального окна просмотра фото
-        document.addEventListener('DOMContentLoaded', function() {
-            // Элементы модального окна фото
-            const photoModal = document.getElementById('photoModal');
-            const photoModalClose = document.getElementById('photoModalClose');
-            const photoModalImg = document.getElementById('photoModalImg');
-            const photoModalName = document.getElementById('photoModalName');
-            const photoModalGrade = document.getElementById('photoModalGrade');
-            const photoModalPrev = document.getElementById('photoModalPrev');
-            const photoModalNext = document.getElementById('photoModalNext');
-            
-            // Все фото сертификатов
-            const certificateImages = document.querySelectorAll('.certificate-img');
-            const certificateData = [];
-            
-            // Собираем данные о всех сертификатах
-            certificateImages.forEach((img, index) => {
-                const resultItem = img.closest('.result-item');
-                const studentName = resultItem.querySelector('.student-name').textContent;
-                const certificateGrade = resultItem.querySelector('.certificate-grade').textContent;
-                
-                certificateData.push({
-                    src: img.src,
-                    name: studentName,
-                    grade: certificateGrade,
-                    index: index
-                });
-                
-                // Добавляем обработчик клика на каждое фото
-                img.addEventListener('click', () => {
-                    openPhotoModal(index);
-                });
-            });
-            
-            let currentPhotoIndex = 0;
-            
-            // Функция открытия модального окна с фото
-            function openPhotoModal(index) {
-                currentPhotoIndex = index;
-                const photo = certificateData[index];
-                
-                photoModalImg.src = photo.src;
-                photoModalName.textContent = photo.name;
-                photoModalGrade.textContent = photo.grade;
-                
-                photoModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-            
-            // Функция закрытия модального окна
-            function closePhotoModal() {
-                photoModal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-            
-            // Функция показа следующего фото
-            function showNextPhoto() {
-                currentPhotoIndex = (currentPhotoIndex + 1) % certificateData.length;
-                openPhotoModal(currentPhotoIndex);
-            }
-            
-            // Функция показа предыдущего фото
-            function showPrevPhoto() {
-                currentPhotoIndex = (currentPhotoIndex - 1 + certificateData.length) % certificateData.length;
-                openPhotoModal(currentPhotoIndex);
-            }
-            
-            // Обработчики событий
-            photoModalClose.addEventListener('click', closePhotoModal);
-            photoModalPrev.addEventListener('click', showPrevPhoto);
-            photoModalNext.addEventListener('click', showNextPhoto);
-            
-            // Закрытие по клику на фон
-            photoModal.addEventListener('click', (e) => {
-                if (e.target === photoModal) {
-                    closePhotoModal();
-                }
-            });
-            
-            // Навигация с помощью клавиатуры
-            document.addEventListener('keydown', (e) => {
-                if (!photoModal.classList.contains('active')) return;
-                
-                if (e.key === 'Escape') {
-                    closePhotoModal();
-                } else if (e.key === 'ArrowRight') {
-                    showNextPhoto();
-                } else if (e.key === 'ArrowLeft') {
-                    showPrevPhoto();
-                }
-            });
-            
-            // Swipe для мобильных устройств
-            let touchStartX = 0;
-            let touchEndX = 0;
-            
-            photoModal.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, false);
-            
-            photoModal.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            }, false);
-            
-            function handleSwipe() {
-                const swipeThreshold = 50;
-                
-                if (touchEndX < touchStartX - swipeThreshold) {
-                    // Свайп влево - следующее фото
-                    showNextPhoto();
-                }
-                
-                if (touchEndX > touchStartX + swipeThreshold) {
-                    // Свайп вправо - предыдущее фото
-                    showPrevPhoto();
-                }
-            }
-            
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Конфигурация
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyJl9ZUOBrxrLGcupImhxvLdn5qRUflahkn9ygM0Y-JobW6-gqMNuK8sL0aXQxojgu0/exec';
-const TELEGRAM_CHANNEL_URL = 'https://t.me/+i_SeI4k5vZ9jY2Ri';
-
-registrationForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const userName = document.getElementById('userName').value;
-    const userPhone = document.getElementById('userPhone').value;
-    
-    if (!userName.trim()) {
-        alert("Iltimos, ismingizni kiriting!");
-        return;
+        // Добавляем в header
+        document.querySelector('header').appendChild(bgContainer);
     }
     
-    // Меняем текст кнопки
-    const submitBtn = registrationForm.querySelector('.form-submit');
-    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Telegramga o\'tish...';
-    
-    // Отправляем данные в Google Sheets (асинхронно, не ждем)
-    const params = new URLSearchParams({name: userName, phone: userPhone});
-    fetch(`${GOOGLE_SCRIPT_URL}?${params.toString()}`, {
-        method: 'GET',
-        mode: 'no-cors'
-    });
-    
-    // Сразу переходим в Telegram
-    setTimeout(() => {
-        window.open(TELEGRAM_CHANNEL_URL, '_blank');
-        closeModal();
-    }, 300);
-});
+    document.addEventListener('DOMContentLoaded', createBackgroundDots);
 
-function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-    
-    setTimeout(() => {
-        registrationForm.reset();
-        const submitBtn = registrationForm.querySelector('.form-submit');
-        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Yuborish';
-        submitBtn.disabled = false;
-        document.querySelectorAll('.form-label').forEach(label => {
-            label.classList.remove('focused');
+
+
+
+        // Убираем старый код с alert
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL для отправки данных в Google Sheets и Telegram канал
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyJl9ZUOBrxrLGcupImhxvLdn5qRUflahkn9ygM0Y-JobW6-gqMNuK8sL0aXQxojgu0/exec';
+            const TELEGRAM_CHANNEL_URL = 'https://t.me/+i_SeI4k5vZ9jY2Ri';
+            
+            // Модальное окно формы регистрации
+            const registrationModalOverlay = document.getElementById('registrationModalOverlay');
+            const closeRegistrationModal = document.getElementById('closeRegistrationModal');
+            const registrationForm = document.getElementById('registrationForm');
+            
+            // Открытие модалки при клике на любую кнопку регистрации
+            const registrationButtons = document.querySelectorAll('.cta-button, .author-info-cta-button, .program-cta-button');
+            
+            registrationButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openRegistrationModal();
+                });
+            });
+            
+            // Функция открытия модалки
+            function openRegistrationModal() {
+                registrationModalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // Сбрасываем форму при каждом открытии
+                registrationForm.reset();
+                
+                // Фокус на первое поле
+                setTimeout(() => {
+                    document.getElementById('userName').focus();
+                }, 300);
+            }
+            
+            // Закрытие модалки
+            closeRegistrationModal.addEventListener('click', closeRegistrationModalFunc);
+            registrationModalOverlay.addEventListener('click', function(e) {
+                if (e.target === registrationModalOverlay) {
+                    closeRegistrationModalFunc();
+                }
+            });
+            
+            // Закрытие по ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && registrationModalOverlay.classList.contains('active')) {
+                    closeRegistrationModalFunc();
+                }
+            });
+            
+            // Обработка отправки формы
+            registrationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Получаем значения полей
+                const userName = document.getElementById('userName').value.trim();
+                const userPhone = document.getElementById('userPhone').value.trim();
+                const cleanPhone = userPhone.replace(/\D/g, '');
+                
+                // Валидация (без alert)
+                if (!userName || !cleanPhone || cleanPhone.length < 9) {
+                    // Просто не отправляем форму
+                    return;
+                }
+                
+                // Меняем текст кнопки
+                const submitBtn = registrationForm.querySelector('.submit-button');
+                const originalHTML = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Jo\'natilmoqda...';
+                submitBtn.disabled = true;
+                
+                // Отправляем данные в Google Sheets
+                const params = new URLSearchParams({
+                    name: userName, 
+                    phone: cleanPhone,
+                    source: 'Ona tili webinar',
+                    date: new Date().toLocaleString('uz-UZ')
+                });
+                
+                // Отправляем запрос в Google Sheets
+                fetch(`${GOOGLE_SCRIPT_URL}?${params.toString()}`, {
+                    method: 'GET',
+                    mode: 'no-cors'
+                }).catch(error => {
+                    console.log('Данные отправлены в Google Sheets');
+                });
+                
+                // Сразу переходим в Telegram
+                setTimeout(() => {
+                    // Закрываем модалку
+                    closeRegistrationModalFunc();
+                    
+                    // Открываем Telegram в новой вкладке
+                    window.open(TELEGRAM_CHANNEL_URL, '_blank');
+                    
+                    // Восстанавливаем кнопку
+                    submitBtn.innerHTML = originalHTML;
+                    submitBtn.disabled = false;
+                }, 300);
+            });
+            
+            // Функция закрытия модалки
+            function closeRegistrationModalFunc() {
+                registrationModalOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Простой ввод телефона - только цифры
+            const phoneInput = document.getElementById('userPhone');
+            
+            phoneInput.addEventListener('input', function(e) {
+                this.value = this.value.replace(/\D/g, '');
+            });
+            
+            // Код для модалки сертификатов
+            const modalOverlay = document.getElementById('modalOverlay');
+            const closeModal = document.getElementById('closeModal');
+            const modalImg = document.getElementById('modalImg');
+            const modalStudentName = document.getElementById('modalStudentName');
+            const modalCertificateGrade = document.getElementById('modalCertificateGrade');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            
+            let currentIndex = 0;
+            const resultItems = document.querySelectorAll('.result-item');
+            const resultItemsArray = Array.from(resultItems);
+            
+            resultItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    currentIndex = index;
+                    openModal(index);
+                });
+            });
+            
+            function openModal(index) {
+                const item = resultItemsArray[index];
+                const imgSrc = item.querySelector('.certificate-img').src;
+                const studentName = item.querySelector('.student-name').textContent;
+                const certificateGrade = item.querySelector('.certificate-grade').textContent;
+                
+                modalImg.src = imgSrc;
+                modalStudentName.textContent = studentName;
+                modalCertificateGrade.textContent = certificateGrade;
+                
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            closeModal.addEventListener('click', closeModalFunc);
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === modalOverlay) {
+                    closeModalFunc();
+                }
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    closeModalFunc();
+                }
+                if (e.key === 'ArrowLeft' && modalOverlay.classList.contains('active')) {
+                    navigate(-1);
+                }
+                if (e.key === 'ArrowRight' && modalOverlay.classList.contains('active')) {
+                    navigate(1);
+                }
+            });
+            
+            prevButton.addEventListener('click', function() {
+                navigate(-1);
+            });
+            
+            nextButton.addEventListener('click', function() {
+                navigate(1);
+            });
+            
+            function navigate(direction) {
+                currentIndex += direction;
+                
+                if (currentIndex < 0) {
+                    currentIndex = resultItemsArray.length - 1;
+                } else if (currentIndex >= resultItemsArray.length) {
+                    currentIndex = 0;
+                }
+                
+                openModal(currentIndex);
+            }
+            
+            function closeModalFunc() {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Анимация появления элементов при загрузке
+            window.addEventListener('load', function() {
+                const elements = document.querySelectorAll('.date-container, .main-text, .subtitle, .author-image-wrapper, .certificate-box, .cta-button');
+                
+                elements.forEach((element, index) => {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }, 100 * index);
+                });
+                
+                // Анимация появления карточек результатов
+                const resultCards = document.querySelectorAll('.result-item');
+                resultCards.forEach((card, index) => {
+                    card.style.animationDelay = `${0.1 + index * 0.1}s`;
+                });
+            });
         });
-    }, 300);
-}

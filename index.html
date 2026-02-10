@@ -3,43 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehrinoz Fazliddinovna - Milliy Sertifikat </title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Jonli Efir | Mehrinoz Fazliddinova</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets\css\style.css">
-    
 </head>
 <body>
-
-
-
-
-
-
-
-    <!-- Модальное окно для просмотра фото -->
-    <div class="photo-modal-overlay" id="photoModal">
-        <div class="photo-modal-container">
-            <button class="photo-modal-close" id="photoModalClose">&times;</button>
+    <!-- Header секция -->
+    <header>
+        <div class="header-content">
+            <div class="date-container">
+                <i class="far fa-calendar-alt"></i> 15-Fevral | Soat 21:00
+            </div>
             
-            <button class="photo-modal-nav photo-modal-prev" id="photoModalPrev">
-                <i class="fas fa-chevron-left"></i>
-            </button>
+            <!-- Изменил h1 на div с классом main-text -->
+            <div class="main-text">
+                Ona tili bo'yicha 2x A+ sohibasi<br>Mehrinoz Fazliddinovadan jonli efir
+            </div>
             
-            <button class="photo-modal-nav photo-modal-next" id="photoModalNext">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+            <p class="subtitle">
+                60 kunda Milliy Sertifikat olish orqali orzuyingizdagi Universitet talabasi bo'ling
+            </p>
             
-            <img id="photoModalImg" class="photo-modal-img" alt="Sertifikat">
+            <div class="author-container">
+                <div class="author-image-wrapper">
+                    <!-- Замените путь на ваш файл с прозрачным фоном -->
+                    <img src="assets\images\lv_0_20260210042253(1).png" alt="Mehrinoz Fazliddinova" class="author-image">
+                </div>
+                
+                <div class="certificate-box">
+                    <!-- Декоративные уголки -->
+                    <div class="corner-decoration corner-top-left"></div>
+                    <div class="corner-decoration corner-top-right"></div>
+                    <div class="corner-decoration corner-bottom-left"></div>
+                    <div class="corner-decoration corner-bottom-right"></div>
+                    
+                    <i class="fas fa-award certificate-icon"></i>
+                    <div class="certificate-title">Sertifikat formulasi</div>
+                    <div class="certificate-number">2026</div>
+                    <div class="certificate-subtitle">Milliy tan olingan sertifikat dasturi</div>
+                </div>
+            </div>
             
-            <div class="photo-modal-info">
-                <div class="photo-modal-name" id="photoModalName"></div>
-                <div class="photo-modal-grade" id="photoModalGrade"></div>
+            <div class="button-container">
+                <button class="cta-button">
+                    <span><i class="fas fa-user-plus"></i> Ishtirok etish</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+
+
+
+
+
+
+
+<!-- Секция результатов -->
+<section class="results-section" id="results">
+    <div class="container">
+        <h2 class="results-title">O'quvchilar natijalari</h2>
+        
+        <!-- Основные карточки (все 10 для компьютера, 6 для телефона) -->
+        <div class="results-grid">
+            <!-- Студент 1 -->
+            <div class="result-item" data-index="0">
+                <div class="certificate-container">
+                    <img src="assets\images\IMG_9386 (2).JPG" alt="Sertifikat" class="certificate-img">
+                </div>
+                <div class="result-info">
+                    <div class="student-name">A.Mushtariy</div>
+                    <div class="certificate-grade">Sertifikat darajasi B</div>
+                </div>
+            </div>
+            
+            <!-- Студент 2 -->
+            <div class="result-item" data-index="1">
+                <div class="certificate-container">
+                    <img src="assets\images\IMG_9388 (2).JPG" alt="Sertifikat" class="certificate-img">
+                </div>
+                <div class="result-info">
+                    <div class="student-name">N.Dilorom</div>
+                    <div class="certificate-grade">Sertifikat darajasi B+</div>
+                </div>
+            </div>
+            
+            <!-- Студент 3 -->
+            <div class="result-item" data-index="2">
+                <div class="certificate-container">
+                    <img src="assets\images\IMG_9387 (2).JPG" alt="Sertifikat" class="certificate-img">
+                </div>
+                <div class="result-info">
+                    <div class="student-name">D.Kamila</div>
+                    <div class="certificate-grade">Sertifikat darajasi C+</div>
+                </div>
+            </div>
+            
+            <!-- Студент 4 -->
+            <div class="result-item" data-index="3">
+                <div class="certificate-container">
+                    <img src="assets\images\IMG_8436 (3).PNG" alt="Sertifikat" class="certificate-img">
+                </div>
+                <div class="result-info">
+                    <div class="student-name">E.Ma'ruf</div>
+                    <div class="certificate-grade">Sertifikat darajasi B</div>
+                </div>
+            </div>
+            
+            <!-- Студент 5 -->
+            <div class="result-item" data-index="4">
+                <div class="certificate-container">
+                    <img src="assets\images\IMG_8437 (2).PNG" alt="Sertifikat" class="certificate-img">
+                </div>
+                <div class="result-info">
+                    <div class="student-name">Sh.Amirbek</div>
+                    <div class="certificate-grade">Sertifikat darajasi B</div>
+                </div>
+            </div>
+            
+            <!-- Студент 6 -->
+            <div class="result-item" data-index="5">
+                <div class="certificate-container">
+                    <img src="assets\images\IMG_8434 (2).PNG" alt="Sertifikat" class="certificate-img">
+                </div>
+                <div class="result-info">
+                    <div class="student-name">I.Munisa</div>
+                    <div class="certificate-grade">Sertifikat darajasi B</div>
+                </div>
+            </div>
+            
+            <!-- Студент 7 -->
+            <div class="result-item" data-index="6">
+                <div class="certificate-container">
+                    <img src="assets\images\IMG_8435 (3).PNG" alt="Sertifikat" class="certificate-img">
+                </div>
+                <div class="result-info">
+                    <div class="student-name">A.Durdona</div>
+                    <div class="certificate-grade">Sertifikat darajasi C+</div>
+                </div>
+            </div>
+            
+            <!-- Студент 8 -->
+            <div class="result-item" data-index="7">
+                <div class="certificate-container">
+                    <img src="assets\images\IMG_8202 (3).PNG" alt="Sertifikat" class="certificate-img">
+                </div>
+                <div class="result-info">
+                    <div class="student-name">N.Jamila</div>
+                    <div class="certificate-grade">Sertifikat darajasi B</div>
+                </div>
+            </div>
+            
+            <!-- Студент 9 -->
+            <div class="result-item" data-index="8">
+                <div class="certificate-container">
+                    <img src="assets\images\IMG_8201 (2).PNG" alt="Sertifikat" class="certificate-img">
+                </div>
+                <div class="result-info">
+                    <div class="student-name">N.Rayxona</div>
+                    <div class="certificate-grade">Sertifikat darajasi B</div>
+                </div>
+            </div>
+            
+            <!-- Студент 10 -->
+            <div class="result-item" data-index="9">
+                <div class="certificate-container">
+                    <img src="assets\images\IMG_8180 (3).PNG" alt="Sertifikat" class="certificate-img">
+                </div>
+                <div class="result-info">
+                    <div class="student-name">A.Ruhshona</div>
+                    <div class="certificate-grade">Sertifikat darajasi B</div>
+                </div>
             </div>
         </div>
     </div>
+</section>
+
+<!-- Модальное окно для увеличения фото -->
+<div class="modal-overlay" id="modalOverlay">
+    <button class="close-modal" id="closeModal">
+        <i class="fas fa-times"></i>
+    </button>
+    <button class="nav-button prev-button" id="prevButton">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="nav-button next-button" id="nextButton">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="modal-content">
+        <img src="" alt="Sertifikat" class="modal-img" id="modalImg">
+        <div class="modal-info">
+            <div class="modal-student-name" id="modalStudentName"></div>
+            <div class="modal-certificate-grade" id="modalCertificateGrade"></div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -52,97 +210,231 @@
 
 
 
-    <!-- АХУЕННАЯ МОДАЛКА -->
-    <div class="modal-overlay" id="registrationModal">
-        <div class="modal-container">
-            <button class="modal-close" id="modalClose">&times;</button>
+
+
+<!-- Секция об авторе -->
+<section class="author-info-section" id="author-info">
+    <div class="container">
+        <div class="author-info-content">
+            <!-- Левая часть: Текст -->
+            <div class="author-info-text">
+                <h2 class="author-info-title">
+                    Milliy Sertifikat olish qiyin emas, agar to'g'ri metotdan foydalansangiz.
+                </h2>
+                
+                <!-- Фото автора для мобильной версии -->
+                <div class="author-photo-mobile">
+                    <img src="assets\images\lv_0_20260210060743(1).png" alt="Mehrinoz Fazliddinova" class="author-info-image-mobile">
+                </div>
+                
+                <div class="author-name">Mehrinoz Fazliddinovna</div>
+                <div class="author-subtitle">Ona tili bo'yicha 8 yillik tajriba</div>
+                
+                <div class="author-achievements">
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="achievement-text">
+                            <span class="achievement-title">Ona tili bo'yicha 8 yillik tajriba</span>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="achievement-text">
+                            <span class="achievement-title">Milliy sertifikatda 2x A+ sohibasi</span>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="achievement-text">
+                            <span class="achievement-title">731 ta o'quvchiga milliy sertifikat olishida yordam bergan</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Обновите эту часть в секции об авторе -->
+<div class="author-info-button">
+    <button class="author-info-cta-button">
+        <span><i class="fas fa-user-plus"></i> Ishtirok etish</span>
+    </button>
+</div>
+            </div>
             
+            <!-- Правая часть: Фото автора -->
+            <div class="author-info-photo">
+                <img src="assets\images\lv_0_20260210060743(1).png" alt="Mehrinoz Fazliddinova" class="author-info-image">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Секция программы - минималистичная версия -->
+<section class="program-section" id="program">
+    <div class="container">
+        <div class="program-header">
+            <h2 class="program-title">"Sertifikat formulasi" Dasturi</h2>
+            <div class="program-date">
+                <i class="far fa-calendar-alt"></i> 15 FEVRAL
+            </div>
+        </div>
+        
+        <div class="program-intro">
+            <p class="program-intro-text">Jonli efirda siz:</p>
+        </div>
+        
+        <div class="program-items">
+            <!-- Пункт 1 -->
+            <div class="program-item">
+                <div class="program-item-content">
+                    <div class="program-item-header">
+                        <div class="program-item-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="program-item-title">Qanday qilib qoydalarsiz Milliy Sertifikat olish mumkin</h3>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- Пункт 2 -->
+            <div class="program-item">
+                <div class="program-item-content">
+                    <div class="program-item-header">
+                        <div class="program-item-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="program-item-title">Qanday qilib Milliy Sertifikat imtihonidagi testlarni tahlil qilish mumkin</h3>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- Пункт 3 -->
+            <div class="program-item">
+                <div class="program-item-content">
+                    <div class="program-item-header">
+                        <div class="program-item-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="program-item-title">Qanday qilib o'zingizni ona tilingizni shunish orqali Aprel oyida 100% kafolat bilan milliy sertifikat olish mumkin</h3>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- Пункт 4 -->
+            <div class="program-item">
+                <div class="program-item-content">
+                    <div class="program-item-header">
+                        <div class="program-item-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 class="program-item-title">Qanday qilib 731 o'quvchi kabi muvaffaqiyatga erishish mumkin</h3>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="program-button-container">
+            <button class="program-cta-button">
+                <span><i class="fas fa-user-plus"></i> Ishtirok etish</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Модальное окно формы регистрации -->
+    <div class="registration-modal-overlay" id="registrationModalOverlay">
+        <div class="registration-modal">
+            <!-- Кнопка закрытия -->
+            <button class="close-registration-modal" id="closeRegistrationModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- Верхняя часть модалки -->
             <div class="modal-header">
                 <div class="modal-icon">
-                    <i class="fas fa-user-plus"></i>
+                    <i class="fas fa-user-graduate"></i>
                 </div>
-                <h2 class="modal-title">Ro'yxatdan o'tish</h2>
-                <p class="modal-subtitle">Jonli efirga qo'shilish uchun ma'lumotlaringizni qoldiring</p>
+                <h2 class="modal-title">Jonli Efirga Ro'yxatdan O'tish</h2>
+                <p class="modal-subtitle">15-Fevral Soat 21:00 | Mehrinoz Fazliddinova</p>
             </div>
             
-            <form class="modal-form" id="registrationForm">
-                <div class="form-group">
-                    <input type="text" class="form-input" id="userName" placeholder="Ism" required>
-                    <label class="form-label" for="userName">Ism</label>
-                </div>
-                
-                <div class="form-group">
-                    <input type="tel" class="form-input" id="userPhone" placeholder="Telefon raqam" required>
-                    <label class="form-label" for="userPhone">Telefon raqam</label>
-                </div>
-                
-                <button type="submit" class="form-submit">
-                    <i class="fas fa-paper-plane"></i> Yuborish
-                </button>
-            </form>
-            
-            <div class="modal-success" id="successMessage">
-                <div class="success-icon">
-                    <i class="fas fa-check"></i>
-                </div>
-                <h3 class="success-message">Muvaffaqiyatli yuborildi!</h3>
-                <p class="success-details">Tez orada siz bilan bog'lanamiz. Rahmat!</p>
+            <!-- Тело модалки с формой -->
+            <div class="modal-body">
+                <form class="registration-form" id="registrationForm">
+                    <div class="form-group">
+                        <label class="form-label" for="userName">
+                            <i class="fas fa-user"></i> Ismingiz
+                        </label>
+                        <input 
+                            type="text" 
+                            id="userName" 
+                            class="form-input" 
+                            placeholder="Ismingizni kiriting" 
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="userPhone">
+                            <i class="fas fa-phone"></i> Telefon raqamingiz
+                        </label>
+                        <input 
+                            type="tel" 
+                            id="userPhone" 
+                            class="form-input" 
+                            placeholder="998901234567" 
+                            required
+                            inputmode="numeric"
+                        >
+                        <div style="font-size: 0.85rem; color: #666; margin-top: 5px; padding-left: 5px;">
+                            Faqat raqamlar: 998901234567
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-paper-plane"></i> Yuborish
+                    </button>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-bg"></div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">60 kunda Milliy Sertifikat olish orqali, Orzuyingizdagi Universitet talabasi bo'ling!</h1>
-                    
-                    <!-- Achievement для десктопа -->
-                    <div class="achievement desktop-achievement">
-                        <div class="achievement-number">731</div>
-                        <p>o'quvchim natijaga erishishkani kabi siz ham erishishiz mumkinligini isbotlab beraman.</p>
-                    </div>
-                    
-                    <!-- Фото для мобильных -->
-                    <div class="mobile-photo-container">
-                        <div class="teacher-photo">
-                            <img src="assets\images\DSC00049(1).jpg" alt="Teacher" class="teacher-img">
-                            <div class="teacher-overlay">
-                                <div class="teacher-name">Mehrinoz Fazliddinovna</div>
-                                <div class="teacher-title">Milliy Sertifikat bo'yicha mutaxassis o'qituvchi</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Кнопка регистрации -->
-                    <div class="buttons-container">
-                        <button class="btn btn-primary btn-pulse open-modal-btn">
-                            <i class="fas fa-user-plus"></i> Ro'yxatdan o'tish
-                        </button>
-                    </div>
-                    
-                    <!-- Achievement для мобильных -->
-                    <div class="mobile-achievement-container">
-                        <div class="achievement">
-                            <div class="achievement-number">731</div>
-                            <p>o'quvchim natijaga erishishkani kabi siz ham erishishiz mumkinligini isbotlab beraman.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Фото для десктопа -->
-                <div class="teacher-photo desktop-photo">
-                    <img src="assets\images\DSC00049(1).jpg" alt="Teacher" class="teacher-img">
-                    <div class="teacher-overlay">
-                        <div class="teacher-name">Mehrinoz Fazliddinovna</div>
-                        <div class="teacher-title">Milliy Sertifikat bo'yicha mutaxassis o'qituvchi</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
 
 
@@ -153,182 +445,17 @@
 
 
 
-   <!-- Секция результатов -->
-    <section class="results-section" id="results">
-        <div class="container">
-            <h2 class="results-title">O'quvchilar natijalari</h2>
+    
+    
+    <!-- Footer секция -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2026 Avocado. All rights reserved</p>
             
-
-
-
-
-
-
-            
-            <div class="results-grid">
-                <!-- Студент 1 -->
-                <div class="result-item">
-                    <div class="certificate-container">
-                        <img src="assets\images\IMG_9386 (2).JPG" alt="Sertifikat" class="certificate-img">
-                    </div>
-                    <div class="result-info">
-                        <div class="student-name">A.Mushtariy</div>
-                        <div class="certificate-grade">Sertifikat darajasi B</div>
-                    </div>
-                </div>
-                
-                <!-- Студент 2 -->
-                <div class="result-item">
-                    <div class="certificate-container">
-                        <img src="assets\images\IMG_9388 (2).JPG" alt="Sertifikat" class="certificate-img">
-                    </div>
-                    <div class="result-info">
-                        <div class="student-name">N.Dilorom</div>
-                        <div class="certificate-grade">Sertifikat darajasi B+</div>
-                    </div>
-                </div>
-                
-                <!-- Студент 3 -->
-                <div class="result-item">
-                    <div class="certificate-container">
-                        <img src="assets\images\IMG_9387 (2).JPG" alt="Sertifikat" class="certificate-img">
-                    </div>
-                    <div class="result-info">
-                        <div class="student-name">D.Kamila</div>
-                        <div class="certificate-grade">Sertifikat darajasi C+</div>
-                    </div>
-                </div>
-                
-                <!-- Студент 4 -->
-                <div class="result-item">
-                    <div class="certificate-container">
-                        <img src="assets\images\IMG_8436 (3).PNG" alt="Sertifikat" class="certificate-img">
-                    </div>
-                    <div class="result-info">
-                        <div class="student-name">E.Ma'ruf</div>
-                        <div class="certificate-grade">Sertifikat darajasi B</div>
-                    </div>
-                </div>
-                
-                <!-- Студент 5 -->
-                <div class="result-item">
-                    <div class="certificate-container">
-                        <img src="assets\images\IMG_8437 (2).PNG" alt="Sertifikat" class="certificate-img">
-                    </div>
-                    <div class="result-info">
-                        <div class="student-name">Sh.Amirbek</div>
-                        <div class="certificate-grade">Sertifikat darajasi B</div>
-                    </div>
-                </div>
-                
-                <!-- Студент 6 -->
-                <div class="result-item">
-                    <div class="certificate-container">
-                        <img src="assets\images\IMG_8434 (2).PNG" alt="Sertifikat" class="certificate-img">
-                    </div>
-                    <div class="result-info">
-                        <div class="student-name">I.Munisa</div>
-                        <div class="certificate-grade">Sertifikat darajasi B</div>
-                    </div>
-                </div>
-                
-                <!-- Студент 7 -->
-                <div class="result-item">
-                    <div class="certificate-container">
-                        <img src="assets\images\IMG_8435 (3).PNG" alt="Sertifikat" class="certificate-img">
-                    </div>
-                    <div class="result-info">
-                        <div class="student-name">A.Durdona</div>
-                        <div class="certificate-grade">Sertifikat darajasi C+</div>
-                    </div>
-                </div>
-                
-                <!-- Студент 8 -->
-                <div class="result-item">
-                    <div class="certificate-container">
-                        <img src="assets\images\IMG_8202 (3).PNG" alt="Sertifikat" class="certificate-img">
-                    </div>
-                    <div class="result-info">
-                        <div class="student-name">N.Jamila</div>
-                        <div class="certificate-grade">Sertifikat darajasi B</div>
-                    </div>
-                </div>
-                
-                <!-- Студент 9 -->
-                <div class="result-item">
-                    <div class="certificate-container">
-                        <img src="assets\images\IMG_8201 (2).PNG" alt="Sertifikat" class="certificate-img">
-                    </div>
-                    <div class="result-info">
-                        <div class="student-name">N.Rayxona</div>
-                        <div class="certificate-grade">Sertifikat darajasi B</div>
-                    </div>
-                </div>
-                
-                <!-- Студент 10 -->
-                <div class="result-item">
-                    <div class="certificate-container">
-                        <img src="assets\images\IMG_8180 (3).PNG" alt="Sertifikat" class="certificate-img">
-                    </div>
-                    <div class="result-info">
-                        <div class="student-name">A.Ruhshona</div>
-                        <div class="certificate-grade">Sertifikat darajasi B</div>
-                    </div>
-               
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-    <!-- Live Stream Section -->
-    <section class="live-stream" id="live">
-        <div class="container">
-            <h2 class="section-title">Jonli efirda siz:</h2>
-            
-            <div class="stream-items">
-                <div class="stream-item">
-                    <i class="fas fa-check-circle"></i>
-                    <strong>Qanday qilib qo'llanilsin milliy sertifikat olishni</strong> - Sizga Milliy Sertifikat olishning barcha sirlari va samarali usullarini o'rgataman.
-                </div>
-                
-                <div class="stream-item">
-                    <i class="fas fa-chart-bar"></i>
-                    <strong>Milliy sertifikat imtihonidagi testlarni tahlil qilishni</strong> - Imtihondagi test turlarini chuqur o'rganib, ularni qanday hal qilish kerakligini ko'rsataman.
-                </div>
-                
-                <div class="stream-item">
-                    <i class="fas fa-language"></i>
-                    <strong>O'zingizni ona tilingizni shuntirish orqali aprel oyida 100% kafolat bilan milliy sertifikat olishni orgatib qo'yaman</strong> - Ona tilini mukammal o'zlashtirish orqali sertifikat olishingizni kafolatlayman.
-                </div>
-            </div>
-            
-            <div class="buttons-container">
-                <button class="btn btn-primary btn-pulse open-modal-btn">
-                    <i class="fas fa-calendar-check"></i> Ro'yxatdan o'tish
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <p class="copyright">© 2026 Avocado. All rights reserved.</p>
         </div>
     </footer>
-
+    
     <script src="assets\js\main.js">
-
     </script>
 </body>
-
 </html>

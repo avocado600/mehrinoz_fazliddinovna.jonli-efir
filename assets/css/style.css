@@ -2,717 +2,628 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-        
-        :root {
-            --primary: #0a0e17;
-            --secondary: #00d4ff;
-            --accent: #7a00ff;
-            --light: #f0f4ff;
-            --gray: #8a8fa3;
-            --dark-gray: #1a1f2e;
-            --font-primary: 'Inter', sans-serif;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
         }
         
         body {
-            font-family: var(--font-primary);
-            background-color: var(--primary);
-            color: var(--light);
+            color: #333;
             line-height: 1.6;
             overflow-x: hidden;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Hero Section */
-        .hero {
+        /* Header стили с улучшенным градиентом */
+        header {
             min-height: 100vh;
-            display: flex;
-            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7ec 50%, #d5d9e0 100%);
             position: relative;
-            padding-top: 80px;
-            padding-bottom: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
             overflow: hidden;
         }
         
-        .hero-bg {
+        /* Добавим легкую текстуру для фона */
+        header::before {
+            content: '';
             position: absolute;
             top: 0;
-            right: 0;
-            width: 50%;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(122, 0, 255, 0.1), rgba(0, 212, 255, 0.05));
-            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
-            z-index: -1;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 1px, transparent 1px),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        
+        .header-content {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            
         }
         
-        .hero-content {
+        .date-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 10px 25px;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #222;
+            font-size: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .main-text {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            max-width: 800px;
+            color: #222;
+            font-weight: 200;
+        }
+        
+        .subtitle {
+            font-size: 1.7rem;
+            text-align: center;
+            margin-bottom: 25px;
+            max-width: 700px;
+            color: #444;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        
+        .author-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+            width: 100%;
+        }
+        
+        /* Увеличиваем обертку для фото */
+        .author-image-wrapper {
+            width: 420px;
+            height: 420px;
             display: flex;
             align-items: center;
-            gap: 60px;
+            justify-content: center;
+            margin-bottom: 5px;
             position: relative;
             z-index: 2;
         }
         
-        .hero-text {
-            flex: 1;
-        }
-        
-        .hero-title {
-            font-size: 60px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 30px;
-            background: linear-gradient(90deg, var(--light), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: titleGlow 4s ease-in-out infinite alternate;
-        }
-        
-        @keyframes titleGlow {
-            0% {
-                text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-            }
-            100% {
-                text-shadow: 0 0 20px rgba(0, 212, 255, 0.7), 0 0 30px rgba(122, 0, 255, 0.4);
-            }
-        }
-        
-        .teacher-photo {
-            flex: 1;
-            position: relative;
-            height: 500px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-        }
-        
-        .teacher-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(0.2) contrast(1.1);
-            transition: transform 8s ease;
-        }
-        
-        .teacher-photo:hover .teacher-img {
-            transform: scale(1.05);
-        }
-        
-        .teacher-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(10, 14, 23, 0.9), transparent);
-            padding: 30px;
-        }
-        
-        .teacher-name {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: -1px;
-        }
-        
-        .teacher-title {
-            font-size: 16px;
-            color: var(--gray);
-            
-        }
-        
-        /* Live Stream Section */
-        .live-stream {
-            padding: 100px 0;
-            position: relative;
-        }
-        
-        .section-title {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 60px;
-            text-align: center;
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .section-title:after {
+        /* Эффект тени для фото */
+        .author-image-wrapper::after {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 3px;
             bottom: -10px;
-            left: 0;
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
-            border-radius: 2px;
-        }
-        
-        .stream-items {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .stream-item {
-            background: rgba(26, 31, 46, 0.7);
-            border-left: 4px solid var(--secondary);
-            padding: 25px 30px;
-            border-radius: 0 8px 8px 0;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 212, 255, 0.1);
-        }
-        
-        .stream-item:hover {
-            transform: translateX(10px);
-            border-left-color: var(--accent);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
-        }
-        
-        .stream-item:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
-            transition: left 0.7s;
-        }
-        
-        .stream-item:hover:before {
-            left: 100%;
-        }
-        
-        .stream-item i {
-            color: var(--secondary);
-            font-size: 20px;
-            margin-right: 15px;
-        }
-        
-        /* Achievements */
-        .achievement {
-            background: rgba(122, 0, 255, 0.1);
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            margin-top: 50px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            border: 1px solid rgba(122, 0, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .achievement:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(122, 0, 255, 0.1) 0%, transparent 70%);
-            z-index: -1;
-        }
-        
-        .achievement-number {
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 10px;
-        }
-        
-        /* Buttons */
-        .buttons-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 70px;
-        }
-        
-        .btn {
-            padding: 18px 40px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 18px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-            min-width: 220px;
-            text-align: center;
-            cursor: pointer;
-            border: none;
-            outline: none;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
-            color: var(--primary);
-            border: none;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
-        }
-        
-        .btn i {
-            font-size: 20px;
-        }
-        
-        .btn-pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(0, 212, 255, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(0, 212, 255, 0);
-            }
-        }
-        
-        /* Footer */
-        footer {
-            padding: 40px 0;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 100px;
-        }
-        
-        .copyright {
-            color: var(--gray);
-            font-size: 14px;
-        }
-        
-        /* Floating elements animation */
-        .floating-element {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: rgba(0, 212, 255, 0.5);
+            left: 10%;
+            width: 80%;
+            height: 20px;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, transparent 70%);
+            z-index: 1;
             border-radius: 50%;
-            z-index: -1;
         }
         
-        /* Decorative lines */
-        .line {
-            position: absolute;
-            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
-            height: 1px;
-            z-index: -1;
-        }
-        
-        /* Мобильные элементы (скрыты по умолчанию) */
-        .mobile-photo-container,
-        .mobile-achievement-container {
-            display: none;
-        }
-        
-        /* АХУЕННАЯ МОДАЛКА */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(5, 10, 20, 0.95);
-            backdrop-filter: blur(15px);
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .modal-overlay.active {
-            display: flex;
-            opacity: 1;
-            animation: modalBgFade 0.6s ease;
-        }
-        
-        @keyframes modalBgFade {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        
-        .modal-container {
-            background: linear-gradient(145deg, rgba(26, 31, 46, 0.95), rgba(10, 14, 23, 0.98));
-            width: 90%;
-            max-width: 500px;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 
-                0 25px 50px -12px rgba(0, 0, 0, 0.7),
-                0 0 0 1px rgba(0, 212, 255, 0.1),
-                0 0 50px rgba(122, 0, 255, 0.2),
-                0 0 100px rgba(0, 212, 255, 0.1);
+        .author-image {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.12));
+            z-index: 2;
             position: relative;
+        }
+        
+        .author-image {
+            background-color: transparent !important;
+            mix-blend-mode: normal;
+        }
+        
+        /* УМЕНЬШЕННЫЙ КРАСИВЫЙ СЕРТИФИКАТ БОКС */
+        .certificate-box {
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            padding: 15px 25px;
+            border-radius: 18px;
+            box-shadow: 
+                0 12px 30px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                0 0 0 1px rgba(255, 255, 255, 0.5);
+            text-align: center;
+            margin-top: -10px;
+            position: relative;
+            z-index: 3;
+            max-width: 440px;
+            width: 90%;
             overflow: hidden;
-            transform: scale(0.8) translateY(-50px);
-            opacity: 0;
-            transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
+            border: 1px solid rgba(255, 255, 255, 0.7);
         }
         
-        .modal-overlay.active .modal-container {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-        }
-        
-        .modal-container:before {
+        /* Декоративные элементы сертификата */
+        .certificate-box::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            height: 4px;
+            background: linear-gradient(90deg, #d50000, #ff5252, #d50000);
             z-index: 1;
         }
         
-        .modal-container:after {
+        .certificate-box::after {
             content: '';
             position: absolute;
-            top: -100%;
-            left: -100%;
-            width: 300%;
-            height: 300%;
-            background: radial-gradient(circle, rgba(122, 0, 255, 0.1) 0%, transparent 60%);
-            z-index: -1;
-            animation: modalGlow 8s infinite linear;
-        }
-        
-        @keyframes modalGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: transparent;
-            border: none;
-            color: var(--gray);
-            font-size: 24px;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s;
-            z-index: 10;
-        }
-        
-        .modal-close:hover {
-            color: var(--secondary);
-            background: rgba(0, 212, 255, 0.1);
-            transform: rotate(90deg);
-        }
-        
-        .modal-header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .modal-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 36px;
-            color: var(--primary);
-            animation: iconFloat 3s ease-in-out infinite alternate;
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
-        }
-        
-        @keyframes iconFloat {
-            0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(-10px) scale(1.05); }
-        }
-        
-        .modal-title {
-            font-size: 32px;
-            font-weight: 700;
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 10px;
-        }
-        
-        .modal-subtitle {
-            color: var(--gray);
-            font-size: 16px;
-        }
-        
-        .modal-form {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-        
-        .form-group {
-            position: relative;
-        }
-        
-        .form-label {
-            position: absolute;
-            top: 18px;
-            left: 20px;
-            color: var(--gray);
-            font-size: 16px;
-            transition: all 0.3s;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1.5px solid rgba(213, 0, 0, 0.1);
+            border-radius: 12px;
             pointer-events: none;
-            background: rgba(26, 31, 46, 0.95);
-            padding: 0 10px;
+            z-index: 0;
         }
         
-        .form-input {
-            width: 100%;
-            padding: 20px;
-            background: rgba(10, 14, 23, 0.8);
-            border: 2px solid rgba(0, 212, 255, 0.2);
-            border-radius: 12px;
-            color: var(--light);
-            font-size: 16px;
-            font-family: var(--font-primary);
-            transition: all 0.3s;
-            outline: none;
+        /* Иконка сертификата */
+        .certificate-icon {
+            font-size: 2rem;
+            color: #d50000;
+            margin-bottom: 12px;
+            display: block;
+            text-shadow: 0 2px 5px rgba(213, 0, 0, 0.2);
         }
         
-        .form-input:focus {
-            border-color: var(--secondary);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        .certificate-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #222;
+            margin-bottom: 6px;
+            letter-spacing: 0.4px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
         }
         
-        .form-input:focus + .form-label,
-        .form-input:not(:placeholder-shown) + .form-label {
-            top: -10px;
-            font-size: 14px;
-            color: var(--secondary);
+        .certificate-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d50000, transparent);
+            border-radius: 1px;
         }
         
-        .form-input::placeholder {
-            color: transparent;
+        .certificate-number {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #d50000;
+            margin: 4px 0 8px;
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.8px;
         }
         
-        .form-submit {
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
-            color: var(--primary);
+        .certificate-subtitle {
+            font-size: 1rem;
+            color: #555;
+            font-weight: 500;
+            background: rgba(245, 245, 245, 0.7);
+            padding: 6px 12px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Декоративные уголки */
+        .corner-decoration {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 1.5px solid rgba(213, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        .corner-top-left {
+            top: 12px;
+            left: 12px;
+            border-right: none;
+            border-bottom: none;
+            border-radius: 8px 0 0 0;
+        }
+        
+        .corner-top-right {
+            top: 12px;
+            right: 12px;
+            border-left: none;
+            border-bottom: none;
+            border-radius: 0 8px 0 0;
+        }
+        
+        .corner-bottom-left {
+            bottom: 12px;
+            left: 12px;
+            border-right: none;
+            border-top: none;
+            border-radius: 0 0 0 8px;
+        }
+        
+        .corner-bottom-right {
+            bottom: 12px;
+            right: 12px;
+            border-left: none;
+            border-top: none;
+            border-radius: 0 0 8px 0;
+        }
+        
+        .button-container {
+            margin-top: 35px;
+            text-align: center;
+        }
+        
+        /* УЛУЧШЕННАЯ КНОПКА С ГРАДИЕНТОМ И АНИМАЦИЕЙ */
+        .cta-button {
+            bottom: 45px;
+            background: linear-gradient(135deg, #d50000 0%, #ff1744 25%, #ff5252 50%, #ff1744 75%, #d50000 100%);
+            background-size: 300% 300%;
+            color: white;
             border: none;
-            padding: 20px;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: 700;
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
+            transition: all 0.4s ease;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            box-shadow: 
+                0 8px 25px rgba(213, 0, 0, 0.3),
+                0 0 0 2px rgba(255, 255, 255, 0.8),
+                0 0 0 4px rgba(213, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
+            animation: gradientShift 3s ease infinite, pulse 2s ease-in-out infinite;
         }
         
-        .form-submit:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+        .cta-button:hover {
+            background: linear-gradient(135deg, #b71c1c 0%, #d50000 25%, #ff1744 50%, #d50000 75%, #b71c1c 100%);
+            background-size: 300% 300%;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 15px 35px rgba(213, 0, 0, 0.4),
+                0 0 0 2px rgba(255, 255, 255, 0.9),
+                0 0 0 6px rgba(213, 0, 0, 0.3);
+            animation: gradientShift 1.5s ease infinite, pulse 1s ease-in-out infinite;
         }
         
-        .form-submit:before {
+        .cta-button:active {
+            transform: translateY(-2px) scale(1.02);
+            transition: all 0.1s ease;
+        }
+        
+        /* Анимация градиента */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        /* Анимация пульсации */
+        @keyframes pulse {
+            0% {
+                box-shadow: 
+                    0 8px 25px rgba(213, 0, 0, 0.3),
+                    0 0 0 2px rgba(255, 255, 255, 0.8),
+                    0 0 0 4px rgba(213, 0, 0, 0.2);
+            }
+            50% {
+                box-shadow: 
+                    0 8px 25px rgba(213, 0, 0, 0.4),
+                    0 0 0 2px rgba(255, 255, 255, 0.9),
+                    0 0 0 6px rgba(213, 0, 0, 0.3);
+            }
+            100% {
+                box-shadow: 
+                    0 8px 25px rgba(213, 0, 0, 0.3),
+                    0 0 0 2px rgba(255, 255, 255, 0.8),
+                    0 0 0 4px rgba(213, 0, 0, 0.2);
+            }
+        }
+        
+        /* Эффект свечения при наведении */
+        .cta-button::after {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.7s;
         }
         
-        .form-submit:hover:before {
+        .cta-button:hover::after {
             left: 100%;
         }
         
-        .modal-success {
-            display: none;
+        /* Внутренняя тень для глубины */
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            border-radius: 48px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        /* Текст кнопки с тенью */
+        .cta-button span {
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer стили */
+        footer {
+            background: linear-gradient(to right, #1a1a1a, #2d2d2d);
+            color: white;
+            padding: 30px 20px;
             text-align: center;
-            padding: 20px 0;
         }
         
-        .modal-success.active {
-            display: block;
-            animation: successFade 0.5s ease;
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
-        @keyframes successFade {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+        .footer-text {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 10px;
+            line-height: 1.5;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .success-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #00d4ff, #00ff88);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            font-size: 48px;
-            color: var(--primary);
-            animation: successScale 0.5s ease;
+        /* Адаптивность - УЛУЧШЕННЫЙ ВАРИАНТ ДЛЯ ТЕЛЕФОНА */
+        @media (max-width: 1024px) {
+            .author-image-wrapper {
+                width: 380px;
+                height: 380px;
+            }
+            
+            .main-text {
+                font-size: 1.6rem;
+            }
         }
         
-        @keyframes successScale {
-            0% { transform: scale(0); }
-            70% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-        
-        .success-message {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-        
-        .success-details {
-            color: var(--gray);
-            font-size: 16px;
-        }
-        
-        /* Responsive - ТОЛЬКО для мобильных */
         @media (max-width: 768px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 40px;
+            .main-text {
+                font-size: 1.5rem;
             }
             
-            .hero-title {
-                font-size: 36px;
+            .subtitle {
+                font-size: 1.5rem;
             }
             
-            /* Скрываем десктопные элементы в мобильной версии */
-            .teacher-photo.desktop-photo,
-            .achievement.desktop-achievement {
-                display: none;
+            .author-image-wrapper {
+                width: 340px;
+                height: 340px;
             }
             
-            /* Показываем мобильные контейнеры */
-            .mobile-photo-container,
-            .mobile-achievement-container {
-                display: block;
-                width: 100%;
+            .certificate-title {
+                font-size: 1.5rem;
             }
             
-            /* Мобильное фото */
-            .mobile-photo-container .teacher-photo {
-                width: 100%;
-                height: 350px;
-                margin: 20px 0;
+            .certificate-number {
+                font-size: 1.7rem;
             }
             
-            /* Мобильный achievement */
-            .mobile-achievement-container {
-                margin-top: 30px;
-                margin-bottom: 30px;
+            .certificate-box {
+                padding: 15px 25px;
+                max-width: 380px;
             }
             
-            /* Кнопки в мобильной версии */
-            .buttons-container {
-                flex-direction: column;
-                align-items: center;
-                margin-top: 40px;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            /* Другие стили для мобильных */
-            .section-title {
-                font-size: 32px;
-            }
-            
-            .teacher-photo {
-                width: 100%;
-                max-width: 100%;
-                height: 350px;
-            }
-            
-            .hero-bg {
-                width: 100%;
-                clip-path: polygon(0% 0%, 100% 0%, 100% 40%, 0% 100%);
-            }
-            
-            /* Адаптивность модалки */
-            .modal-container {
-                padding: 30px 20px;
-                width: 95%;
-                margin: 20px;
-            }
-            
-            .modal-title {
-                font-size: 26px;
-            }
-            
-            .modal-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 30px;
+            .cta-button {
+                padding: 16px 40px;
+                font-size: 1.2rem;
             }
         }
         
-        /* Для планшетов и выше - оставляем десктопную версию */
-        @media (min-width: 769px) {
-            .mobile-photo-container,
-            .mobile-achievement-container {
-                display: none !important;
+        @media (max-width: 480px) {
+            .main-text {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
             }
             
-            .teacher-photo.desktop-photo,
-            .achievement.desktop-achievement {
-                display: block !important;
+            .subtitle {
+                font-size: 1.3rem;
+                margin-bottom: 20px;
+            }
+            
+            .author-image-wrapper {
+                width: 280px;
+                height: 280px;
+            }
+            
+            /* СЕРТИФИКАТ БОКС ЕЩЕ МЕНЬШЕ ДЛЯ ТЕЛЕФОНА */
+            .certificate-box {
+                padding: 12px 18px !important;
+                max-width: 280px !important;
+                border-radius: 15px;
+                margin-top: -8px;
+            }
+            
+            .certificate-icon {
+                font-size: 1.6rem !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .certificate-title {
+                font-size: 1.2rem !important;
+                margin-bottom: 4px !important;
+                padding-bottom: 6px !important;
+            }
+            
+            .certificate-number {
+                font-size: 1.4rem !important;
+                margin: 3px 0 6px !important;
+                letter-spacing: 0.5px !important;
+            }
+            
+            .certificate-subtitle {
+                font-size: 0.85rem !important;
+                padding: 5px 10px !important;
+                margin-top: 6px !important;
+            }
+            
+            .corner-decoration {
+                width: 15px !important;
+                height: 15px !important;
+            }
+            
+            .corner-top-left,
+            .corner-top-right,
+            .corner-bottom-left,
+            .corner-bottom-right {
+                top: 8px !important;
+                left: 8px !important;
+                right: 8px !important;
+                bottom: 8px !important;
+            }
+            
+            .certificate-box::before {
+                height: 3px;
+            }
+            
+            .certificate-box::after {
+                top: 6px;
+                left: 6px;
+                right: 6px;
+                bottom: 6px;
+                border-width: 1px;
+                border-radius: 10px;
+            }
+            
+            /* Кнопка для телефона */
+            .cta-button {
+                padding: 14px 30px !important;
+                font-size: 1.1rem !important;
+                border-radius: 45px;
+            }
+            
+            .date-container {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .author-image-wrapper {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .main-text {
+                font-size: 1.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            /* ЕЩЕ МЕНЬШЕ ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ */
+            .certificate-box {
+                padding: 10px 15px !important;
+                max-width: 250px !important;
+            }
+            
+            .certificate-icon {
+                font-size: 1.4rem !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .certificate-title {
+                font-size: 1.1rem !important;
+            }
+            
+            .certificate-number {
+                font-size: 1.3rem !important;
+            }
+            
+            .certificate-subtitle {
+                font-size: 0.8rem !important;
+                padding: 4px 8px !important;
+            }
+            
+            .corner-decoration {
+                width: 12px !important;
+                height: 12px !important;
+            }
+            
+            .corner-top-left,
+            .corner-top-right,
+            .corner-bottom-left,
+            .corner-bottom-right {
+                top: 6px !important;
+                left: 6px !important;
+                right: 6px !important;
+                bottom: 6px !important;
+            }
+            
+            .cta-button {
+                padding: 12px 25px !important;
+                font-size: 1rem !important;
+            }
+        }
+        
+        /* Дополнительный медиа-запрос для очень маленьких устройств */
+        @media (max-width: 320px) {
+            .author-image-wrapper {
+                width: 230px;
+                height: 230px;
+            }
+            
+            .certificate-box {
+                max-width: 230px !important;
+                padding: 8px 12px !important;
+            }
+            
+            .certificate-title {
+                font-size: 1rem !important;
+            }
+            
+            .certificate-number {
+                font-size: 1.2rem !important;
             }
         }
 
@@ -730,128 +641,491 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Секция результатов */
+/* НОВАЯ СЕКЦИЯ РЕЗУЛЬТАТОВ */
 .results-section {
-    padding: 80px 0;
+    background-color: #ffffff;
+    padding: 80px 20px;
     position: relative;
 }
 
+.results-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(245, 247, 250, 0.3) 0%, rgba(228, 231, 236, 0.2) 100%);
+    z-index: 0;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
 .results-title {
-    font-size: 42px;
-    font-weight: 700;
-    margin-bottom: 60px;
+    font-size: 2.8rem;
     text-align: center;
-    background: linear-gradient(90deg, var(--secondary), var(--accent));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    margin-bottom: 60px;
+    color: #222;
+    font-weight: 700;
     position: relative;
     display: inline-block;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.results-title:after {
+.results-title::after {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 3px;
-    bottom: -10px;
-    left: 0;
-    background: linear-gradient(90deg, var(--secondary), var(--accent));
+    bottom: -15px;
+    left: 25%;
+    width: 50%;
+    height: 4px;
+    background: linear-gradient(90deg, #d50000, #ff5252, #d50000);
     border-radius: 2px;
 }
 
+/* КОМПЬЮТЕР: 2 строки по 5 карточек */
 .results-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
+    margin-top: 40px;
 }
 
 .result-item {
-    background: rgba(26, 31, 46, 0.7);
-    border-radius: 12px;
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border-radius: 18px;
     overflow: hidden;
-    transition: all 0.4s;
-    border: 1px solid rgba(0, 212, 255, 0.1);
-    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.07),
+        0 0 0 1px rgba(255, 255, 255, 0.9),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    transition: all 0.4s ease;
     position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    height: 100%;
     display: flex;
     flex-direction: column;
-    height: 320px;
-}
-
-.result-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
-    border-color: var(--secondary);
-}
-
-.certificate-container {
-    flex: 1;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(10, 14, 23, 0.5);
-}
-
-.certificate-img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 2px solid rgba(0, 212, 255, 0.2);
-    transition: transform 0.5s, border-color 0.3s;
     cursor: pointer;
 }
 
-.certificate-img:hover {
+.result-item:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(255, 255, 255, 0.95),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.certificate-container {
+    height: 250px; /* Увеличил высоту еще больше */
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #f5f7fa, #e4e7ec);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    flex-grow: 1; /* Картинка занимает больше места */
+}
+
+.certificate-img {
+    max-width: 100%; /* Картинка во весь рост */
+    max-height: 100%; /* Картинка во весь рост */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.result-item:hover .certificate-img {
     transform: scale(1.05);
-    border-color: var(--secondary);
 }
 
 .result-info {
-    padding: 20px;
+    padding: 20px 15px;
     text-align: center;
-    border-top: 1px solid rgba(0, 212, 255, 0.1);
-    background: rgba(15, 20, 35, 0.8);
+    position: relative;
+    flex-shrink: 0; /* Не сжимается при увеличении картинки */
+}
+
+.result-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #d50000, transparent);
+    border-radius: 1.5px;
 }
 
 .student-name {
-    font-size: 18px;
+    font-size: 1.2rem;
     font-weight: 700;
-    color: var(--light);
-    margin-bottom: 8px;
+    color: #222;
+    margin-bottom: 6px;
+    letter-spacing: 0.4px;
 }
 
 .certificate-grade {
-    font-size: 16px;
-    color: var(--secondary);
+    font-size: 1rem;
+    color: #d50000;
+    font-weight: 600;
+    background: rgba(213, 0, 0, 0.08);
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    border: 1px solid rgba(213, 0, 0, 0.1);
+}
+
+/* МОДАЛЬНОЕ ОКНО ДЛЯ УВЕЛИЧЕНИЯ ФОТО */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    background: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    animation: modalAppear 0.4s ease;
+}
+
+@keyframes modalAppear {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-img {
+    max-width: 100%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 5px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    padding: 25px 20px 15px;
+    text-align: center;
+}
+
+.modal-student-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.modal-certificate-grade {
+    font-size: 1.1rem;
+    color: #ff5252;
     font-weight: 600;
 }
 
-/* Анимация для сертификатов */
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    z-index: 1001;
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    z-index: 1001;
+}
+
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-button {
+    left: 20px;
+}
+
+.next-button {
+    right: 20px;
+}
+
+/* АДАПТИВНОСТЬ ДЛЯ СЕКЦИИ РЕЗУЛЬТАТОВ */
+
+/* Для планшетов и маленьких ноутбуков */
+@media (max-width: 1200px) {
+    .results-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
+    }
+    
+    .certificate-container {
+        height: 230px;
+    }
+    
+    .student-name {
+        font-size: 1.15rem;
+    }
+    
+    .certificate-grade {
+        font-size: 0.95rem;
+    }
+}
+
+/* Для планшетов (768px) */
+@media (max-width: 992px) {
+    .results-section {
+        padding: 70px 20px;
+    }
+    
+    .results-title {
+        font-size: 2.4rem;
+        margin-bottom: 50px;
+    }
+    
+    .results-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    
+    .certificate-container {
+        height: 220px;
+    }
+}
+
+/* ТЕЛЕФОНЫ: 2 строки по 3 карточки (только 6 карточек) */
+@media (max-width: 768px) {
+    .results-section {
+        padding: 60px 15px;
+    }
+    
+    .results-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    
+    .results-title::after {
+        bottom: -12px;
+        height: 3px;
+        left: 20%;
+        width: 60%;
+    }
+    
+    /* Показываем только первые 6 карточек */
+    .results-grid .result-item:nth-child(n+7) {
+        display: none;
+    }
+    
+    /* 2 строки по 3 карточки */
+    .results-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+    
+    .result-item {
+        border-radius: 15px;
+    }
+    
+    .certificate-container {
+        height: 180px;
+    }
+    
+    .certificate-img {
+        max-width: 95%;
+        max-height: 95%;
+    }
+    
+    .result-info {
+        padding: 15px 10px;
+    }
+    
+    .student-name {
+        font-size: 0.95rem;
+        margin-bottom: 5px;
+    }
+    
+    .certificate-grade {
+        font-size: 0.85rem;
+        padding: 5px 10px;
+        border-radius: 15px;
+    }
+    
+    /* Адаптивность для модального окна на телефоне */
+    .modal-content {
+        max-width: 95%;
+        max-height: 85%;
+    }
+    
+    .modal-student-name {
+        font-size: 1.2rem;
+    }
+    
+    .modal-certificate-grade {
+        font-size: 1rem;
+    }
+    
+    .close-modal {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+        top: 15px;
+        right: 15px;
+    }
+    
+    .nav-button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    
+    .prev-button {
+        left: 10px;
+    }
+    
+    .next-button {
+        right: 10px;
+    }
+}
+
+/* Для очень маленьких телефонов */
+@media (max-width: 576px) {
+    .results-section {
+        padding: 50px 12px;
+    }
+    
+    .results-title {
+        font-size: 1.7rem;
+        margin-bottom: 35px;
+    }
+    
+    /* 2 строки по 3 карточки */
+    .results-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+    
+    .certificate-container {
+        height: 150px;
+    }
+    
+    .result-info {
+        padding: 12px 8px;
+    }
+    
+    .student-name {
+        font-size: 0.85rem;
+    }
+    
+    .certificate-grade {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+    }
+    
+    .result-info::before {
+        height: 2px;
+        left: 20%;
+        width: 60%;
+    }
+}
+
+/* Для экстремально маленьких телефонов */
+@media (max-width: 400px) {
+    .results-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .certificate-container {
+        height: 130px;
+    }
+    
+    .result-info {
+        padding: 10px 6px;
+    }
+    
+    .student-name {
+        font-size: 0.8rem;
+    }
+    
+    .certificate-grade {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+    }
+}
+
+/* Анимация появления карточек */
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(25px);
     }
     to {
         opacity: 1;
@@ -860,162 +1134,1337 @@
 }
 
 .result-item {
-    animation: fadeInUp 0.6s ease forwards;
+    animation: fadeInUp 0.5s ease forwards;
     opacity: 0;
 }
 
-/* Задержки анимации для каждого элемента */
-.result-item:nth-child(1) { animation-delay: 0.1s; }
-.result-item:nth-child(2) { animation-delay: 0.2s; }
-.result-item:nth-child(3) { animation-delay: 0.3s; }
-.result-item:nth-child(4) { animation-delay: 0.4s; }
-.result-item:nth-child(5) { animation-delay: 0.5s; }
-.result-item:nth-child(6) { animation-delay: 0.6s; }
-.result-item:nth-child(7) { animation-delay: 0.7s; }
-.result-item:nth-child(8) { animation-delay: 0.8s; }
-.result-item:nth-child(9) { animation-delay: 0.9s; }
-.result-item:nth-child(10) { animation-delay: 1s; }
 
-/* Адаптивность для результатов */
-@media (max-width: 1200px) {
-    .results-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        padding: 0 20px;
-    }
-    
-    .result-item {
-        height: 300px;
-    }
-    
-    .certificate-img {
-        height: 160px;
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Секция информации об авторе */
+.author-info-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
 }
 
-@media (max-width: 992px) {
-    .results-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .result-item {
-        height: 280px;
-    }
-    
-    .certificate-img {
-        height: 150px;
-    }
+.author-info-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(213, 0, 0, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(213, 0, 0, 0.05) 0%, transparent 50%);
+    z-index: 1;
 }
 
-/* ВАЖНОЕ ИЗМЕНЕНИЕ: для мобильных (до 768px) делаем 4 в ряд */
+.author-info-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    position: relative;
+    z-index: 2;
+    
+}
+
+/* Левая часть: Текст */
+.author-info-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.author-info-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #222;
+    line-height: 1.3;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 25px;
+}
+
+.author-info-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #d50000, #ff5252);
+    border-radius: 2px;
+}
+
+.author-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.author-subtitle {
+    font-size: 1.3rem;
+    color: #d50000;
+    font-weight: 600;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.author-subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #d50000;
+    border-radius: 1px;
+}
+
+/* Достижения */
+.author-achievements {
+    margin-bottom: 40px;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 4px solid #d50000;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.achievement-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(213, 0, 0, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+    color: #d50000;
+    font-size: 1.5rem;
+}
+
+.achievement-text {
+    flex: 1;
+}
+
+.achievement-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #222;
+    line-height: 1.4;
+}
+
+/* Кнопка */
+.author-info-button {
+    margin-top: 50px;
+}
+
+
+
+
+/* Отдельная кнопка для секции автора */
+.author-info-cta-button {
+    background: linear-gradient(135deg, #d50000 0%, #ff1744 25%, #ff5252 50%, #ff1744 75%, #d50000 100%);
+    background-size: 300% 300%;
+    color: white;
+    border: none;
+    padding: 18px 50px;
+    font-size: 1.3rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    box-shadow: 
+        0 8px 25px rgba(213, 0, 0, 0.3),
+        0 0 0 2px rgba(255, 255, 255, 0.8),
+        0 0 0 4px rgba(213, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    animation: gradientShift 3s ease infinite, pulse 2s ease-in-out infinite;
+}
+
+.author-info-cta-button:hover {
+    background: linear-gradient(135deg, #b71c1c 0%, #d50000 25%, #ff1744 50%, #d50000 75%, #b71c1c 100%);
+    background-size: 300% 300%;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 15px 35px rgba(213, 0, 0, 0.4),
+        0 0 0 2px rgba(255, 255, 255, 0.9),
+        0 0 0 6px rgba(213, 0, 0, 0.3);
+    animation: gradientShift 1.5s ease infinite, pulse 1s ease-in-out infinite;
+}
+
+.author-info-cta-button:active {
+    transform: translateY(-2px) scale(1.02);
+    transition: all 0.1s ease;
+}
+
+.author-info-cta-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.7s;
+}
+
+.author-info-cta-button:hover::after {
+    left: 100%;
+}
+
+.author-info-cta-button::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 48px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.author-info-cta-button span {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Адаптивность для кнопки в секции автора */
 @media (max-width: 768px) {
-    .results-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 в ряд */
-        gap: 12px;
-        padding: 0 15px;
+    .author-info-cta-button {
+        padding: 16px 40px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .author-info-cta-button {
+        padding: 14px 35px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .author-info-cta-button {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+/* Правая часть: Фото автора */
+.author-info-photo {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.author-info-image {
+    max-width: 100%;
+    max-height: 600px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+    position: relative;
+    z-index: 2;
+}
+
+/* Декоративные элементы для фото */
+.author-info-photo::before {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: linear-gradient(135deg, rgba(213, 0, 0, 0.1) 0%, rgba(255, 82, 82, 0.05) 100%);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    z-index: 1;
+    animation: morphing 15s infinite ease-in-out;
+}
+
+@keyframes morphing {
+    0% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: rotate(0deg);
+    }
+    25% {
+        border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+    }
+    50% {
+        border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+        transform: rotate(180deg);
+    }
+    75% {
+        border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+    }
+    100% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: rotate(360deg);
+    }
+}
+
+/* Фото для мобильной версии (скрыто на десктопе) */
+.author-photo-mobile {
+    display: none;
+}
+
+/* Адаптивность для секции об авторе */
+
+/* Для планшетов */
+@media (max-width: 992px) {
+    .author-info-section {
+        padding: 80px 20px;
     }
     
-    .results-title {
-        font-size: 32px;
+    .author-info-content {
+        flex-direction: column;
+        gap: 50px;
+    }
+    
+    .author-info-text {
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .author-info-title {
+        font-size: 2.2rem;
+    }
+    
+    .author-info-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .author-name {
+        font-size: 2rem;
+    }
+    
+    .author-subtitle::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .achievement-item {
+        text-align: left;
+    }
+    
+    .author-info-photo {
+        max-width: 400px;
+        order: -1; /* Фото сверху на мобилке */
+        display: none; /* Скрываем большое фото на мобилке */
+    }
+    
+    /* Показываем фото для мобильной версии */
+    .author-photo-mobile {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+        position: relative;
+    }
+    
+    .author-info-image-mobile {
+        max-width: 300px;
+        max-height: 300px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.12));
+        position: relative;
+        z-index: 2;
+    }
+    
+    .author-photo-mobile::before {
+        content: '';
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        background: linear-gradient(135deg, rgba(213, 0, 0, 0.1) 0%, rgba(255, 82, 82, 0.05) 100%);
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        z-index: 1;
+        animation: morphing 15s infinite ease-in-out;
+    }
+}
+
+/* Для телефонов */
+@media (max-width: 768px) {
+    .author-info-section {
+        padding: 60px 15px;
+    }
+    
+    .author-info-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+    
+    .author-name {
+        font-size: 1.7rem;
+    }
+    
+    .author-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+    
+    .achievement-item {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .achievement-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        margin-right: 15px;
+    }
+    
+    .achievement-title {
+        font-size: 1.1rem;
+    }
+    
+    .author-info-button {
+        margin-top: 30px;
+    }
+    
+    .author-cta-button {
+        padding: 16px 35px;
+        font-size: 1.1rem;
+    }
+    
+    .author-info-image-mobile {
+        max-width: 250px;
+        max-height: 250px;
+    }
+    
+    .author-photo-mobile::before {
+        width: 230px;
+        height: 230px;
+    }
+}
+
+/* Для очень маленьких телефонов */
+@media (max-width: 480px) {
+    .author-info-title {
+        font-size: 1.6rem;
+    }
+    
+    .author-name {
+        font-size: 1.5rem;
+    }
+    
+    .achievement-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1.1rem;
+        margin-right: 12px;
+    }
+    
+    .achievement-title {
+        font-size: 1rem;
+    }
+    
+    .author-info-image-mobile {
+        max-width: 220px;
+        max-height: 220px;
+    }
+    
+    .author-photo-mobile::before {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Анимация появления секции */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.author-info-section {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Секция программы - минималистичная версия */
+.program-section {
+    background: #ffffff;
+    padding: 100px 20px;
+    position: relative;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.program-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.program-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #222;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+.program-date {
+    display: inline-block;
+    font-size: 1.2rem;
+    color: #d50000;
+    font-weight: 600;
+    padding: 8px 20px;
+    border: 2px solid rgba(213, 0, 0, 0.2);
+    border-radius: 25px;
+    background: rgba(213, 0, 0, 0.03);
+}
+
+.program-date i {
+    margin-right: 8px;
+}
+
+.program-intro {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.program-intro-text {
+    font-size: 1.8rem;
+    color: #222;
+    font-weight: 500;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.program-intro-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: #d50000;
+    border-radius: 1.5px;
+}
+
+/* Элементы программы - минималистичные */
+.program-items {
+    margin-bottom: 60px;
+}
+
+.program-item {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.program-item:hover {
+    border-left-color: #d50000;
+    transform: translateX(5px);
+    background: #ffffff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.program-item-content {
+    position: relative;
+}
+
+.program-item-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.program-item-icon {
+    width: 45px;
+    height: 45px;
+    background: rgba(213, 0, 0, 0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d50000;
+    font-size: 1.3rem;
+    margin-right: 20px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.program-item:hover .program-item-icon {
+    background: #d50000;
+    color: white;
+    transform: scale(1.05);
+}
+
+.program-item-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #222;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.program-item-desc {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    padding-left: 65px;
+}
+
+/* Кнопка программы */
+.program-button-container {
+    text-align: center;
+}
+
+.program-cta-button {
+    background: #d50000;
+    color: white;
+    border: none;
+    padding: 18px 45px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px 15px rgba(213, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.program-cta-button:hover {
+    background: #b71c1c;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(213, 0, 0, 0.3);
+}
+
+.program-cta-button:active {
+    transform: translateY(-1px);
+}
+
+.program-cta-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s;
+}
+
+.program-cta-button:hover::after {
+    left: 100%;
+}
+
+.program-cta-button span {
+    position: relative;
+    z-index: 2;
+}
+
+.program-cta-button i {
+    margin-right: 10px;
+}
+
+/* Адаптивность для секции программы */
+
+/* Для планшетов */
+@media (max-width: 992px) {
+    .program-section {
+        padding: 80px 20px;
+    }
+    
+    .program-title {
+        font-size: 2.4rem;
+    }
+    
+    .program-intro-text {
+        font-size: 1.6rem;
+    }
+    
+    .program-item {
+        padding: 25px;
+    }
+}
+
+/* Для телефонов */
+@media (max-width: 768px) {
+    .program-section {
+        padding: 60px 15px;
+    }
+    
+    .program-title {
+        font-size: 2rem;
+    }
+    
+    .program-date {
+        font-size: 1.1rem;
+        padding: 7px 18px;
+    }
+    
+    .program-header {
         margin-bottom: 40px;
     }
     
-    .result-item {
-        height: 220px; /* Оптимальная высота для 4 в ряд */
+    .program-intro {
+        margin-bottom: 40px;
     }
     
-    .certificate-container {
-        padding: 10px;
+    .program-intro-text {
+        font-size: 1.4rem;
     }
     
-    .certificate-img {
-        height: 110px; /* Уменьшаем высоту фото */
+    .program-items {
+        margin-bottom: 40px;
     }
     
-    .result-info {
-        padding: 12px;
+    .program-item {
+        padding: 20px;
     }
     
-    .student-name {
-        font-size: 13px;
-        margin-bottom: 5px;
+    .program-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 15px;
     }
     
-    .certificate-grade {
-        font-size: 12px;
+    .program-item-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .program-item-title {
+        font-size: 1.3rem;
+        width: 100%;
+    }
+    
+    .program-item-desc {
+        padding-left: 0;
+        font-size: 1rem;
+    }
+    
+    .program-cta-button {
+        padding: 16px 35px;
+        font-size: 1.1rem;
     }
 }
 
-/* Для средних телефонов */
-@media (max-width: 576px) {
-    .results-grid {
-        grid-template-columns: repeat(4, 1fr); /* Все равно 4 в ряд */
-        gap: 10px;
-        padding: 0 10px;
-    }
-    
-    .result-item {
-        height: 200px;
-    }
-    
-    .certificate-img {
-        height: 100px;
-    }
-    
-    .student-name {
-        font-size: 12px;
-    }
-    
-    .certificate-grade {
-        font-size: 11px;
-    }
-}
-
-/* Для маленьких телефонов (менее 480px) */
+/* Для очень маленьких телефонов */
 @media (max-width: 480px) {
-    .results-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 в ряд для маленьких экранов */
-        gap: 15px;
+    .program-title {
+        font-size: 1.8rem;
     }
     
-    .result-item {
-        height: 240px;
+    .program-intro-text {
+        font-size: 1.3rem;
     }
     
-    .certificate-img {
-        height: 130px;
+    .program-item {
+        padding: 18px;
     }
     
-    .student-name {
-        font-size: 14px;
+    .program-item-title {
+        font-size: 1.2rem;
     }
     
-    .certificate-grade {
-        font-size: 13px;
+    .program-item-desc {
+        font-size: 0.95rem;
+    }
+    
+    .program-cta-button {
+        padding: 14px 30px;
+        font-size: 1rem;
+    }
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.program-item {
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+.program-item:nth-child(1) { animation-delay: 0.1s; }
+.program-item:nth-child(2) { animation-delay: 0.2s; }
+.program-item:nth-child(3) { animation-delay: 0.3s; }
+.program-item:nth-child(4) { animation-delay: 0.4s; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Для телефонов */
+@media (max-width: 768px) {
+    .program-section {
+        padding: 60px 15px;
+    }
+    
+    .program-title {
+        font-size: 2rem;
+    }
+    
+    .program-date {
+        font-size: 1.1rem;
+        padding: 7px 18px;
+    }
+    
+    .program-header {
+        margin-bottom: 40px;
+    }
+    
+    .program-intro {
+        margin-bottom: 40px;
+    }
+    
+    .program-intro-text {
+        font-size: 1.4rem;
+    }
+    
+    .program-items {
+        margin-bottom: 40px;
+    }
+    
+    /* УМЕНЬШАЕМ БОКСЫ ДЛЯ ТЕЛЕФОНА */
+    .program-item {
+        padding: 18px; /* Уменьшил padding */
+        margin-bottom: 15px; /* Уменьшил отступ между боксами */
+    }
+    
+    .program-item-header {
+        flex-direction: row; /* Оставляем горизонтальное расположение */
+        align-items: center;
+        margin-bottom: 12px;
+    }
+    
+    .program-item-icon {
+        width: 38px; /* Уменьшил иконку */
+        height: 38px;
+        font-size: 1.1rem;
+        margin-right: 15px;
+        margin-bottom: 0;
+        border-radius: 8px;
+    }
+    
+    .program-item-title {
+        font-size: 1.1rem; /* Уменьшил заголовок */
+        line-height: 1.3;
+        width: 100%;
+    }
+    
+    .program-item-desc {
+        padding-left: 53px; /* Отступ под иконку (38px + 15px) */
+        font-size: 0.9rem; /* Уменьшил текст описания */
+        line-height: 1.5;
+        color: #777;
+    }
+    
+    .program-cta-button {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Для очень маленьких телефонов */
+@media (max-width: 480px) {
+    .program-title {
+        font-size: 1.7rem;
+    }
+    
+    .program-date {
+        font-size: 1rem;
+        padding: 6px 16px;
+    }
+    
+    .program-intro-text {
+        font-size: 1.2rem;
+    }
+    
+    /* ЕЩЕ МЕНЬШЕ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ */
+    .program-item {
+        padding: 15px; /* Еще меньше padding */
+        margin-bottom: 12px;
+    }
+    
+    .program-item-icon {
+        width: 35px; /* Еще меньше иконка */
+        height: 35px;
+        font-size: 1rem;
+        margin-right: 12px;
+        border-radius: 7px;
+    }
+    
+    .program-item-title {
+        font-size: 1rem; /* Еще меньше заголовок */
+        line-height: 1.25;
+    }
+    
+    .program-item-desc {
+        padding-left: 47px; /* Обновляем отступ под иконку */
+        font-size: 0.85rem; /* Еще меньше текст описания */
+        line-height: 1.4;
+    }
+    
+    .program-cta-button {
+        padding: 13px 25px;
+        font-size: 1rem;
+    }
+}
+
+/* Для экстремально маленьких телефонов */
+@media (max-width: 360px) {
+    .program-title {
+        font-size: 1.6rem;
+    }
+    
+    .program-intro-text {
+        font-size: 1.1rem;
+    }
+    
+    /* МИНИМАЛЬНЫЙ РАЗМЕР ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ */
+    .program-item {
+        padding: 12px; /* Минимальный padding */
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+    
+    .program-item-icon {
+        width: 32px; /* Минимальный размер иконки */
+        height: 32px;
+        font-size: 0.9rem;
+        margin-right: 10px;
+        border-radius: 6px;
+    }
+    
+    .program-item-title {
+        font-size: 0.95rem; /* Минимальный размер заголовка */
+        line-height: 1.2;
+    }
+    
+    .program-item-desc {
+        padding-left: 42px; /* Минимальный отступ */
+        font-size: 0.8rem; /* Минимальный размер текста */
+        line-height: 1.3;
+    }
+    
+    .program-cta-button {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Для планшетов */
+@media (max-width: 992px) {
+    .program-section {
+        padding: 80px 20px;
+    }
+    
+    .program-title {
+        font-size: 2.2rem; /* Слегка уменьшил */
+    }
+    
+    .program-intro-text {
+        font-size: 1.5rem; /* Слегка уменьшил */
+    }
+    
+    .program-item {
+        padding: 22px 25px; /* Уменьшил для планшетов */
+    }
+    
+    .program-item-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    
+    .program-item-title {
+        font-size: 1.2rem;
+    }
+    
+    .program-item-desc {
+        padding-left: 60px;
+        font-size: 0.95rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* Элементы программы - минималистичные (обновленные) */
+.program-items {
+    margin-bottom: 60px;
+}
+
+.program-item {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 25px 30px; /* Уменьшил вертикальный padding */
+    margin-bottom: 18px; /* Уменьшил отступ */
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.program-item:hover {
+    border-left-color: #d50000;
+    transform: translateX(5px);
+    background: #ffffff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.program-item-icon {
+    width: 42px; /* Слегка уменьшил на десктопе */
+    height: 42px;
+    background: rgba(213, 0, 0, 0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d50000;
+    font-size: 1.2rem; /* Слегка уменьшил */
+    margin-right: 20px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.program-item-title {
+    font-size: 1.3rem; /* Слегка уменьшил */
+    font-weight: 600;
+    color: #222;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.program-item-desc {
+    font-size: 1rem; /* Слегка уменьшил */
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    padding-left: 62px; /* Отступ под иконку (42px + 20px) */
+}
+
+
+
+
+/* Кнопка программы - обновленная с градиентом и анимацией */
+.program-button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.program-cta-button {
+    background: linear-gradient(135deg, #d50000 0%, #ff1744 25%, #ff5252 50%, #ff1744 75%, #d50000 100%);
+    background-size: 300% 300%;
+    color: white;
+    border: none;
+    padding: 22px 55px; /* Увеличил размер */
+    font-size: 1.4rem; /* Увеличил шрифт */
+    border-radius: 60px; /* Более округлая */
+    cursor: pointer;
+    transition: all 0.4s ease;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 
+        0 10px 30px rgba(213, 0, 0, 0.3),
+        0 0 0 2px rgba(255, 255, 255, 0.8),
+        0 0 0 4px rgba(213, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    animation: gradientShift 3s ease infinite, pulseButton 2s ease-in-out infinite;
+    display: inline-block;
+    min-width: 280px; /* Минимальная ширина */
+}
+
+.program-cta-button:hover {
+    background: linear-gradient(135deg, #b71c1c 0%, #d50000 25%, #ff1744 50%, #d50000 75%, #b71c1c 100%);
+    background-size: 300% 300%;
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 
+        0 18px 40px rgba(213, 0, 0, 0.4),
+        0 0 0 2px rgba(255, 255, 255, 0.9),
+        0 0 0 6px rgba(213, 0, 0, 0.3);
+    animation: gradientShift 1.5s ease infinite, pulseButton 1s ease-in-out infinite;
+}
+
+.program-cta-button:active {
+    transform: translateY(-3px) scale(1.02);
+    transition: all 0.1s ease;
+}
+
+.program-cta-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.7s;
+}
+
+.program-cta-button:hover::after {
+    left: 100%;
+}
+
+.program-cta-button::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 58px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.program-cta-button span {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.program-cta-button i {
+    margin-right: 12px;
+    font-size: 1.3rem;
+}
+
+/* Отдельная анимация пульсации для кнопки */
+@keyframes pulseButton {
+    0% {
+        box-shadow: 
+            0 10px 30px rgba(213, 0, 0, 0.3),
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 0 4px rgba(213, 0, 0, 0.2);
+    }
+    50% {
+        box-shadow: 
+            0 10px 30px rgba(213, 0, 0, 0.4),
+            0 0 0 2px rgba(255, 255, 255, 0.9),
+            0 0 0 6px rgba(213, 0, 0, 0.3);
+    }
+    100% {
+        box-shadow: 
+            0 10px 30px rgba(213, 0, 0, 0.3),
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 0 4px rgba(213, 0, 0, 0.2);
+    }
+}
+
+/* Анимация градиента (если еще нет в коде) */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Адаптивность для большой кнопки */
+
+/* Для планшетов */
+@media (max-width: 992px) {
+    .program-cta-button {
+        padding: 20px 50px;
+        font-size: 1.3rem;
+        min-width: 260px;
+    }
+    
+    .program-cta-button i {
+        font-size: 1.2rem;
+    }
+}
+
+/* Для телефонов */
+@media (max-width: 768px) {
+    .program-button-container {
+        margin-top: 20px;
+    }
+    
+    .program-cta-button {
+        padding: 18px 45px;
+        font-size: 1.2rem;
+        min-width: 240px;
+        border-radius: 55px;
+    }
+    
+    .program-cta-button:hover {
+        transform: translateY(-4px) scale(1.03);
+    }
+    
+    .program-cta-button i {
+        font-size: 1.1rem;
+        margin-right: 10px;
+    }
+    
+    .program-cta-button::before {
+        border-radius: 53px;
+    }
+}
+
+/* Для маленьких телефонов */
+@media (max-width: 480px) {
+    .program-cta-button {
+        padding: 16px 40px;
+        font-size: 1.1rem;
+        min-width: 220px;
+        border-radius: 50px;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .program-cta-button i {
+        font-size: 1rem;
+        margin-right: 8px;
+    }
+    
+    .program-cta-button::before {
+        border-radius: 48px;
     }
 }
 
 /* Для очень маленьких телефонов */
 @media (max-width: 360px) {
-    .results-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+    .program-cta-button {
+        padding: 15px 35px;
+        font-size: 1rem;
+        min-width: 200px;
+        border-radius: 45px;
     }
     
-    .result-item {
-        height: 220px;
+    .program-cta-button i {
+        font-size: 0.9rem;
     }
     
-    .certificate-img {
-        height: 120px;
-    }
-    
-    .student-name {
-        font-size: 13px;
-    }
-    
-    .certificate-grade {
-        font-size: 12px;
+    .program-cta-button::before {
+        border-radius: 43px;
     }
 }
 
@@ -1030,303 +2479,436 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-        .photo-modal-overlay {
+        /* МОДАЛЬНОЕ ОКНО ФОРМЫ РЕГИСТРАЦИИ - ОПТИМИЗИРОВАННОЕ */
+        .registration-modal-overlay {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(5, 10, 20, 0.98);
-            backdrop-filter: blur(20px);
-            z-index: 10000;
-            display: none;
-            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
             justify-content: center;
+            align-items: center;
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            will-change: opacity;
         }
         
-        .photo-modal-overlay.active {
+        .registration-modal-overlay.active {
             display: flex;
             opacity: 1;
-            animation: photoModalFade 0.5s ease;
         }
         
-        @keyframes photoModalFade {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        
-        .photo-modal-container {
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
+        .registration-modal {
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            border-radius: 20px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 450px;
             position: relative;
-            transform: scale(0.9);
+            box-shadow: 
+                0 20px 50px rgba(213, 0, 0, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            transform: scale(0.95);
             opacity: 0;
-            transition: transform 0.5s ease, opacity 0.5s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            will-change: transform, opacity;
         }
         
-        .photo-modal-overlay.active .photo-modal-container {
+        .registration-modal-overlay.active .registration-modal {
             transform: scale(1);
             opacity: 1;
         }
         
-        .photo-modal-img {
-            width: 100%;
-            height: auto;
-            max-height: 80vh;
-            object-fit: contain;
-            border-radius: 12px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
-            border: 2px solid rgba(0, 212, 255, 0.3);
+        /* Верхняя часть модалки */
+        .modal-header {
+            background: linear-gradient(135deg, #d50000 0%, #ff1744 100%);
+            padding: 25px 20px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        .photo-modal-close {
-            position: absolute;
-            top: -40px;
-            right: -40px;
-            background: rgba(0, 212, 255, 0.2);
-            border: 2px solid var(--secondary);
-            color: var(--light);
-            font-size: 28px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        .modal-icon {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+        
+        .modal-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+        
+        /* Тело модалки */
+        .modal-body {
+            padding: 30px 25px 25px;
+        }
+        
+        /* Форма - оптимизированная */
+        .registration-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #222;
+            font-size: 1rem;
+        }
+        
+        .form-label i {
+            color: #d50000;
+            margin-right: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 16px 18px;
+            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            background: white;
+            transition: all 0.2s ease;
+            color: #333;
+            font-weight: 500;
+            outline: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        
+        .form-input:focus {
+            border-color: #d50000;
+            box-shadow: 0 0 0 3px rgba(213, 0, 0, 0.1);
+            background: white;
+        }
+        
+        .form-input::placeholder {
+            color: #999;
+            font-weight: 400;
+        }
+        
+        /* Кнопка отправки - оптимизированная */
+        .submit-button {
+            background: linear-gradient(135deg, #d50000 0%, #ff1744 100%);
+            color: white;
+            border: none;
+            padding: 18px 25px;
+            font-size: 1.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 10001;
+            gap: 10px;
+            will-change: transform;
         }
         
-        .photo-modal-close:hover {
-            background: var(--secondary);
-            color: var(--primary);
+        .submit-button:hover {
+            background: linear-gradient(135deg, #b71c1c 0%, #d50000 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(213, 0, 0, 0.3);
+        }
+        
+        .submit-button:active {
+            transform: translateY(0);
+        }
+        
+        /* Кнопка закрытия */
+        .close-registration-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 2001;
+            backdrop-filter: blur(5px);
+        }
+        
+        .close-registration-modal:hover {
+            background: rgba(255, 255, 255, 0.25);
             transform: rotate(90deg);
         }
         
-        .photo-modal-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 212, 255, 0.2);
-            border: 2px solid var(--secondary);
-            color: var(--light);
-            font-size: 24px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 10001;
-        }
-        
-        .photo-modal-nav:hover {
-            background: var(--secondary);
-            color: var(--primary);
-        }
-        
-        .photo-modal-prev {
-            left: -60px;
-        }
-        
-        .photo-modal-next {
-            right: -60px;
-        }
-        
-        .photo-modal-info {
-            position: absolute;
-            bottom: -50px;
-            left: 0;
-            right: 0;
+        /* Сообщение об успешной отправке */
+        .success-message {
+            display: none;
             text-align: center;
-            color: var(--light);
-            padding: 15px;
-            background: rgba(10, 14, 23, 0.9);
-            border-radius: 8px;
-            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 30px 25px;
         }
         
-        .photo-modal-name {
-            font-size: 20px;
+        .success-icon {
+            font-size: 4rem;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        
+        .success-title {
+            font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 5px;
-            color: var(--secondary);
+            color: #222;
+            margin-bottom: 10px;
         }
         
-        .photo-modal-grade {
-            font-size: 16px;
-            color: var(--gray);
+        .success-text {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 20px;
         }
         
-        /* Адаптивность для модалки фото */
-        @media (max-width: 992px) {
-            .photo-modal-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-            }
-            
-            .photo-modal-prev {
-                left: 10px;
-            }
-            
-            .photo-modal-next {
-                right: 10px;
-            }
-            
-            .photo-modal-close {
-                top: 10px;
-                right: 10px;
-                width: 40px;
-                height: 40px;
-                font-size: 24px;
-            }
-        }
-        
+        /* Адаптивность модалки */
         @media (max-width: 768px) {
-            .photo-modal-container {
-                width: 95%;
+            .registration-modal {
+                max-width: 90%;
             }
             
-            .photo-modal-nav {
+            .modal-header {
+                padding: 20px 15px 15px;
+            }
+            
+            .modal-icon {
+                font-size: 2.5rem;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
+            
+            .modal-body {
+                padding: 25px 20px 20px;
+            }
+            
+            .form-input {
+                padding: 14px 16px;
+                font-size: 0.95rem;
+            }
+            
+            .submit-button {
+                padding: 16px 20px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .registration-modal {
+                max-width: 95%;
+                border-radius: 15px;
+            }
+            
+            .modal-header {
+                padding: 18px 12px 12px;
+            }
+            
+            .modal-icon {
+                font-size: 2.2rem;
+                margin-bottom: 12px;
+            }
+            
+            .modal-title {
+                font-size: 1.3rem;
+            }
+            
+            .modal-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .modal-body {
+                padding: 20px 15px 15px;
+            }
+            
+            .form-label {
+                font-size: 0.95rem;
+            }
+            
+            .form-input {
+                padding: 12px 14px;
+                font-size: 0.9rem;
+                border-radius: 10px;
+            }
+            
+            .submit-button {
+                padding: 14px 18px;
+                font-size: 1rem;
+                border-radius: 10px;
+            }
+            
+            .close-registration-modal {
                 width: 35px;
                 height: 35px;
-                font-size: 18px;
-            }
-            
-            .photo-modal-info {
-                bottom: -40px;
-                padding: 10px;
-            }
-            
-            .photo-modal-name {
-                font-size: 18px;
+                font-size: 1.1rem;
+                top: 12px;
+                right: 12px;
             }
         }
-        
-        /* Для маленьких экранов скрываем кнопки навигации */
-        @media (max-width: 576px) {
-            .photo-modal-prev,
-            .photo-modal-next {
-                display: none;
-            }
+
+    header {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e7ec 50%, #d5d9e0 100%);
+        background-size: 400% 400%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 20px;
+        overflow: hidden;
+        animation: gradientAnimation 15s ease infinite;
+    }
+
+    @keyframes gradientAnimation {
+        0% {
+            background-position: 0% 0%;
         }
-        
-        /* Делаем фото сертификатов кликабельными */
-        .certificate-img {
-            cursor: pointer;
-            transition: transform 0.3s;
+        25% {
+            background-position: 100% 0%;
         }
-        
-        .certificate-img:hover {
-            transform: scale(1.05);
+        50% {
+            background-position: 100% 100%;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ ДЛЯ МОБИЛЬНЫХ */
-@media (max-width: 768px) {
-    .results-section {
-        padding: 60px 0;
-        overflow-x: hidden;
+        75% {
+            background-position: 0% 100%;
+        }
+        100% {
+            background-position: 0% 0%;
+        }
     }
-    
-    .results-grid {
-        display: flex !important; /* Меняем grid на flex */
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        padding: 10px 15px 20px !important;
-        gap: 15px !important;
-        margin: 0 -15px !important;
-        max-width: none !important;
+
+    /* Плавающие частицы на фоне */
+    .particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
     }
-    
-    /* Скрываем скроллбар на некоторых браузерах */
-    .results-grid::-webkit-scrollbar {
-        height: 4px;
+
+    .particle {
+        position: absolute;
+        background: rgba(213, 0, 0, 0.03);
+        border-radius: 50%;
+        animation: floatParticle 20s infinite linear;
     }
-    
-    .results-grid::-webkit-scrollbar-track {
-        background: rgba(0, 212, 255, 0.1);
+
+    @keyframes floatParticle {
+        0% {
+            transform: translateY(100vh) translateX(0) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 0.1;
+        }
+        90% {
+            opacity: 0.1;
+        }
+        100% {
+            transform: translateY(-100px) translateX(100px) rotate(360deg);
+            opacity: 0;
+        }
     }
-    
-    .results-grid::-webkit-scrollbar-thumb {
-        background: var(--secondary);
-        border-radius: 2px;
+
+     header {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e7ec 50%, #d5d9e0 100%);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 20px;
+        overflow: hidden;
     }
-    
-    .result-item {
-        flex: 0 0 auto !important;
-        width: 150px !important; /* Фиксированная ширина для скролла */
-        height: 220px !important;
-        scroll-snap-align: start;
+
+    /* Анимированные точки на фоне */
+    .animated-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
     }
-    
-    .certificate-container {
-        height: 120px !important;
+
+    .bg-dot {
+        position: absolute;
+        background: rgba(213, 0, 0, 0.08);
+        border-radius: 50%;
+        animation: floatDot 15s linear infinite;
     }
-    
-    .certificate-img {
-        height: 100px !important;
+
+    @keyframes floatDot {
+        0% {
+            transform: translateY(0) translateX(0) scale(1);
+            opacity: 0.1;
+        }
+        25% {
+            transform: translateY(-25vh) translateX(10vw) scale(1.2);
+            opacity: 0.2;
+        }
+        50% {
+            transform: translateY(-50vh) translateX(20vw) scale(1);
+            opacity: 0.3;
+        }
+        75% {
+            transform: translateY(-25vh) translateX(30vw) scale(0.8);
+            opacity: 0.2;
+        }
+        100% {
+            transform: translateY(0) translateX(40vw) scale(1);
+            opacity: 0.1;
+        }
     }
-    
-    .student-name {
-        font-size: 13px !important;
+
+    .header-content {
+        max-width: 1200px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 2;
     }
-    
-    .certificate-grade {
-        font-size: 12px !important;
-    }
-}
-
-/* Для планшетов - 3 в ряд */
-@media (min-width: 769px) and (max-width: 992px) {
-    .results-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
